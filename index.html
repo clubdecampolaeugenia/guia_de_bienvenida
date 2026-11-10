@@ -85,7 +85,7 @@ h2{
 .boton-outline{background:transparent; border:2px solid var(--petroleo); color:var(--petroleo);}
 .boton-outline--claro{border-color:var(--hueso); color:var(--hueso);}
 .boton-lima{background:var(--lima); color:var(--petroleo);}
-section{padding:56px 0 0;}
+section{padding:76px 0 0;}
 section:first-of-type{padding-top:0;}
 
 /* ══════════════ Header (markup y CSS tal cual el sitio público; ══════════════
@@ -134,18 +134,48 @@ section:first-of-type{padding-top:0;}
 .site-header__toggle[aria-expanded="true"] .site-header__toggle-bar:last-child{ transform:translateY(-4px) rotate(-45deg); }
 .site-header[data-menu="open"] .site-header__toggle{ color:var(--petroleo); }
 .site-header__panel{
-  position:absolute; inset:0; z-index:1; background:var(--hueso);
-  display:flex; align-items:center; justify-content:center;
-  opacity:0; pointer-events:none; transition:opacity var(--dur-base) var(--ease-motion);
+  position:fixed; inset:0; z-index:1; pointer-events:none;
+  background:linear-gradient(180deg, #ffffff 0%, var(--hueso) 100%);
+  display:flex; flex-direction:column; justify-content:center;
+  padding:0 var(--sp-lg);
+  clip-path:inset(14px 12px calc(100% - 76px) 12px round 999px);
+  transition:clip-path 380ms var(--ease-motion), visibility 0s linear 380ms;
+  visibility:hidden;
 }
-.site-header[data-menu="open"] .site-header__panel{ opacity:1; pointer-events:auto; }
-.site-header__panel nav{ display:flex; flex-direction:column; align-items:center; gap:4px; }
+.site-header[data-menu="open"] .site-header__panel{
+  pointer-events:auto; visibility:visible;
+  clip-path:inset(0 0 0 0 round 0);
+  transition:clip-path 380ms var(--ease-motion), visibility 0s;
+}
+.site-header__panel nav{
+  display:flex; flex-direction:column; align-items:flex-start;
+  width:100%; max-width:420px; margin:0 auto;
+  padding-top:calc(70px + env(safe-area-inset-top, 0px));
+}
 .site-header__panel nav a{
-  font-family:'Fraunces', Georgia, serif; font-size:1.4rem; color:var(--petroleo);
-  text-decoration:none; padding:12px 0; opacity:0; transform:translateY(8px);
-  transition:opacity var(--dur-base) var(--ease-motion), transform var(--dur-base) var(--ease-motion);
+  width:100%;
+  font-family:'Fraunces',serif; font-size:clamp(1.32rem,1.1rem + 1.4vw,1.7rem); font-weight:440;
+  color:var(--petroleo); text-decoration:none; padding:16px 14px;
+  border-top:1px solid rgba(19,84,87,.14);
+  border-radius:var(--r-md);
+  opacity:0; transform:translateY(10px);
+  transition:opacity var(--dur-base) var(--ease-motion), transform var(--dur-base) var(--ease-motion), color var(--dur-fast) ease, background var(--dur-fast) ease;
 }
+.site-header__panel nav a:last-child{ border-bottom:1px solid rgba(19,84,87,.14); }
 .site-header[data-menu="open"] .site-header__panel nav a{ opacity:1; transform:translateY(0); }
+.site-header[data-menu="open"] .site-header__panel nav a:nth-child(1){transition-delay:60ms;}
+.site-header[data-menu="open"] .site-header__panel nav a:nth-child(2){transition-delay:100ms;}
+.site-header[data-menu="open"] .site-header__panel nav a:nth-child(3){transition-delay:140ms;}
+.site-header[data-menu="open"] .site-header__panel nav a:nth-child(4){transition-delay:180ms;}
+.site-header[data-menu="open"] .site-header__panel nav a:nth-child(5){transition-delay:220ms;}
+.site-header[data-menu="open"] .site-header__panel nav a:nth-child(6){transition-delay:260ms;}
+.site-header__panel nav a:hover,
+.site-header__panel nav a:focus-visible,
+.site-header__panel nav a:active{
+  background:var(--lima); color:var(--petroleo);
+  border-top-color:transparent;
+}
+.site-header__panel nav a:focus-visible{ outline:2px solid var(--petroleo); outline-offset:-2px; }
 @media(max-width:760px){
   .site-header__bar{ width:calc(100% - 24px); margin:14px auto 0; padding:8px 12px; }
   .site-header__links{ display:none; }
@@ -192,7 +222,7 @@ section:first-of-type{padding-top:0;}
 .portada__titulo .wordmark{ display:block; font-size:1.55em; line-height:1.1; margin-top:4px; }
 .portada .acento{ margin-top:18px; }
 .portada__nota{
-  margin:24px auto 0; max-width:680px; text-align:center;
+  margin:32px auto 0; max-width:620px; text-align:center;
   font-family:'Fraunces', Georgia, serif; font-style:italic;
   font-size:clamp(1rem, .95rem + .3vw, 1.12rem); line-height:1.6; color:var(--petroleo);
 }
@@ -256,10 +286,22 @@ details[open] .chev{ transform:rotate(180deg); }
 }
 .cgv-video .circulo{ width:40px; height:40px; border-radius:50%; background:var(--lima); display:flex; align-items:center; justify-content:center; }
 .lista-herramientas{ list-style:none; margin:24px 0 0; padding:0; border-top:1px solid rgba(19,84,87,.14); }
-.lista-herramientas li{ padding:14px 0; border-bottom:1px solid rgba(19,84,87,.14); display:flex; justify-content:space-between; gap:16px; align-items:baseline; flex-wrap:wrap; }
+.lista-herramientas li{ padding:18px 0; border-bottom:1px solid rgba(19,84,87,.14); display:flex; justify-content:space-between; gap:14px; align-items:center; flex-wrap:wrap; }
+.lista-herramientas .texto{ display:flex; align-items:flex-start; gap:14px; flex:999 1 240px; min-width:0; }
 .lista-herramientas strong{ color:var(--petroleo); display:block; }
 .lista-herramientas .desc{ display:block; font-size:15px; line-height:1.55; margin-top:2px; }
-.lista-herramientas a{ font-weight:700; font-size:14px; white-space:nowrap; }
+.ico{ width:36px; height:36px; border-radius:50%; flex:0 0 auto; display:flex; align-items:center; justify-content:center; }
+.ico svg{ width:18px; height:18px; }
+.ico--claro{ background:var(--crema); color:var(--petroleo); }
+.ico--oscuro{ background:rgba(245,243,236,.16); color:var(--lima); }
+.fila-cabecera{ display:flex; align-items:center; gap:14px; margin-bottom:10px; }
+.fila-cabecera .titulo, .fila-cabecera .rotulo{ margin:0; }
+.boton-chip{ display:inline-flex; align-items:center; gap:6px; white-space:nowrap; flex:0 0 auto; min-height:38px; padding:0 16px; border-radius:var(--r-pill); border:1.5px solid var(--petroleo); color:var(--petroleo)!important; font:700 13px 'Karla', sans-serif; text-decoration:none; }
+.boton-chip:hover{ background:var(--petroleo); color:var(--hueso)!important; }
+.boton-chip--claro{ border-color:var(--hueso); color:var(--hueso)!important; }
+.boton-chip--claro:hover{ background:var(--hueso); color:var(--petroleo)!important; }
+.boton-chip .ico{ width:18px; height:18px; background:transparent!important; color:inherit!important; }
+.boton-chip .ico svg{ width:16px; height:16px; }
 .bloque-lote{ margin-top:28px; background:var(--petroleo); color:var(--hueso); border-radius:var(--r-lg); padding:22px 24px; }
 .bloque-lote .titulo{ margin:0 0 4px; font-family:'Fraunces', Georgia, serif; font-size:20px; }
 .bloque-lote .sub{ margin:0 0 14px; font-size:15px; line-height:1.6; color:#e6efe5; }
@@ -336,12 +378,12 @@ details[open] .chev{ transform:rotate(180deg); }
     <img src="https://clubdecampolaeugenia.github.io/fotos/hero-01-fachada.jpg" alt="El salón principal del Club de Campo La Eugenia">
     <div class="portada__velo"></div>
     <div class="portada__texto">
-      <p class="portada__etiqueta">Guía de bienvenida</p>
+      <p class="portada__etiqueta">Para socios e inquilinos</p>
       <h1 class="portada__titulo">Te damos la bienvenida a<span class="wordmark">La Eugenia</span></h1>
       <div class="acento" aria-hidden="true"><span></span><span></span></div>
     </div>
   </div>
-  <p class="portada__nota">Esta guía acompaña a socios e inquilinos con la cuota social al día. Si todavía no regularizaste tu situación, también es para vos: conocé todo lo que el club tiene para ofrecerte.</p>
+  <p class="portada__nota">Pensada para quienes ya tienen la cuota social al día. Si todavía no regularizaste tu situación, también es para vos: conocé todo lo que el club tiene para ofrecerte.</p>
 </section>
 
 <!-- ══════════════ Introducción ══════════════ -->
@@ -387,32 +429,35 @@ details[open] .chev{ transform:rotate(180deg); }
 
     <div class="tarjeta-oscura">
       <p class="rotulo">Canal formal</p>
-      <p class="titulo">Email institucional</p>
-      <p style="margin:0 0 10px; line-height:1.6; font-size:15px">Notas, presentaciones, reclamos, formularios y comprobantes.</p>
-      <a href="mailto:clubdecampolaeugenia@gmail.com">clubdecampolaeugenia@gmail.com</a>
+      <div class="fila-cabecera"><span class="ico ico--oscuro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6Zm2.4-.5 6.1 5 6.1-5H5.4ZM19 7.9l-6.4 5.2a1 1 0 0 1-1.2 0L5 7.9V18h14V7.9Z" fill="currentColor"></path></svg></span><p class="titulo">Email institucional</p></div>
+      <p style="margin:0 0 14px; line-height:1.6; font-size:15px">Notas, presentaciones, reclamos, formularios y comprobantes.</p>
+      <a class="boton-chip boton-chip--claro" href="mailto:clubdecampolaeugenia@gmail.com"><span class="ico ico--oscuro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6Zm2.4-.5 6.1 5 6.1-5H5.4ZM19 7.9l-6.4 5.2a1 1 0 0 1-1.2 0L5 7.9V18h14V7.9Z" fill="currentColor"></path></svg></span> clubdecampolaeugenia@gmail.com</a>
     </div>
 
     <div class="tarjeta-clara">
       <p class="rotulo">Un número, dos funciones</p>
-      <p class="titulo">WhatsApp del club</p>
+      <div class="fila-cabecera"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.35 2 11.7c0 1.85.53 3.58 1.45 5.06L2 22l5.4-1.4a10.1 10.1 0 0 0 4.6 1.1c5.52 0 10-4.35 10-9.7S17.52 2 12 2Zm0 17.7c-1.5 0-2.9-.4-4.12-1.1l-.3-.17-3.2.83.86-3.1-.2-.32A7.9 7.9 0 0 1 4 11.7C4 7.45 7.58 4 12 4s8 3.45 8 7.7-3.58 8-8 8Z" fill="currentColor"></path><path d="M9.1 8.24c-.19-.42-.38-.43-.56-.44h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08s.89 2.41 1.02 2.58c.13.17 1.76 2.68 4.26 3.76.59.25 1.06.4 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29-.25-.13-1.47-.73-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.65.81-.79.97-.15.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.44-.06-.13-.55-1.35-.76-1.84Z" fill="currentColor"></path></svg></span><p class="titulo">WhatsApp del club</p></div>
       <p style="margin:0 0 10px; line-height:1.6; font-size:15px"><strong>Grupo oficial de difusión.</strong> LA EUGE informa reporta todas las novedades del barrio y del club. Publica solo la administración.</p>
       <p style="margin:0 0 14px; line-height:1.6; font-size:15px"><strong>Línea oficial del club, solo WhatsApp.</strong> Te atiende 🙋🏻‍♀️ EugenIA, nuestra asistente virtual, para consultas de rutina y reportes vecinales. Eventualmente puede asistirte un administrador.</p>
-      <a class="boton" href="https://wa.me/5493764113300">+54 9 3764 11-3300</a>
+      <a class="boton-chip" href="https://wa.me/5493764113300"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.35 2 11.7c0 1.85.53 3.58 1.45 5.06L2 22l5.4-1.4a10.1 10.1 0 0 0 4.6 1.1c5.52 0 10-4.35 10-9.7S17.52 2 12 2Zm0 17.7c-1.5 0-2.9-.4-4.12-1.1l-.3-.17-3.2.83.86-3.1-.2-.32A7.9 7.9 0 0 1 4 11.7C4 7.45 7.58 4 12 4s8 3.45 8 7.7-3.58 8-8 8Z" fill="currentColor"></path><path d="M9.1 8.24c-.19-.42-.38-.43-.56-.44h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08s.89 2.41 1.02 2.58c.13.17 1.76 2.68 4.26 3.76.59.25 1.06.4 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29-.25-.13-1.47-.73-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.65.81-.79.97-.15.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.44-.06-.13-.55-1.35-.76-1.84Z" fill="currentColor"></path></svg></span> +54 9 3764 11-3300</a>
     </div>
 
     <div class="lista-filas">
       <div class="fila">
-        <p>Alertas Vecinales</p>
+        <div class="fila-cabecera" style="margin-bottom:4px"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11v2a2 2 0 0 0 2 2h1l10 4V5L6 9H5a2 2 0 0 0-2 2Z" fill="currentColor"></path><path d="M19 9a3 3 0 0 1 0 6" fill="none" stroke="currentColor" stroke-width="2"></path></svg></span><p style="font-weight:700; color:var(--petroleo)">Alertas Vecinales</p></div>
         <p>Grupo dedicado solo a la seguridad del barrio. Tiene normas de uso que podés leer en su descripción.</p>
       </div>
       <div class="fila">
-        <p>Boletín mensual</p>
-        <p>Llega los primeros días del mes por email: valor de la cuota, movimiento de tesorería, canales de contacto y el resumen de las novedades del mes. <a href="https://clubdecampolaeugenia.github.io/boletin-la-eugenia/" style="font-weight:700">Suscribirme</a></p>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap">
+          <div class="fila-cabecera" style="margin-bottom:0"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"></rect><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2"></path></svg></span><p style="font-weight:700; color:var(--petroleo)">Boletín mensual</p></div>
+          <a class="boton-chip" href="https://clubdecampolaeugenia.github.io/boletin-la-eugenia/">Suscribirme</a>
+        </div>
+        <p style="margin-top:8px">Llega los primeros días del mes por email: valor de la cuota, movimiento de tesorería, canales de contacto y el resumen de las novedades del mes.</p>
       </div>
       <div class="fila" style="border-bottom:0">
         <details>
           <summary>
-            <span><span style="display:block; font-weight:700; color:var(--petroleo)">Garita de ingreso</span><span style="font-size:15px">+54 9 11 6188-8188 · visitas, proveedores y correspondencia</span></span>
+            <span style="display:flex; align-items:center; gap:14px"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8Z" fill="currentColor"></path></svg></span><span><span style="display:block; font-weight:700; color:var(--petroleo)">Garita de ingreso</span><span style="font-size:15px">+54 9 11 6188-8188 · visitas, proveedores y correspondencia</span></span></span>
             <svg class="chev" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="#135457" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
           </summary>
           <p style="margin:12px 0 12px; font-size:15px; line-height:1.6">Es un servicio de control en el ingreso, prestado por una empresa contratada por el club, que ordena las entradas y salidas del barrio. No es vigilancia integral: no incluye monitoreo del barrio ni seguridad en los domicilios, y la protección de cada lote la define su propietario. Ante una emergencia, llamá primero a los servicios públicos.</p>
@@ -464,24 +509,24 @@ details[open] .chev{ transform:rotate(180deg); }
 
   <ul class="lista-herramientas">
     <li>
-      <span><strong>Reportes vecinales</strong><span class="desc">Mascotas u objetos perdidos o encontrados: completás un formulario, se genera un mensaje para el WhatsApp del club y ahí sumás las fotos. Lo revisamos y lo publicamos en LA EUGE informa.</span></span>
-      <a href="https://clubdecampolaeugenia.taplink.site/">Abrir</a>
+      <span class="texto"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11v2a2 2 0 0 0 2 2h1l10 4V5L6 9H5a2 2 0 0 0-2 2Z" fill="currentColor"></path><path d="M19 9a3 3 0 0 1 0 6" fill="none" stroke="currentColor" stroke-width="2"></path></svg></span><span><strong>Reportes vecinales</strong><span class="desc">Mascotas u objetos perdidos o encontrados: completás un formulario, se genera un mensaje para el WhatsApp del club y ahí sumás las fotos. Lo revisamos y lo publicamos en LA EUGE informa.</span></span></span>
+      <a class="boton-chip" href="https://clubdecampolaeugenia.taplink.site/">Abrir</a>
     </li>
     <li>
-      <span><strong>Cómo llegar</strong><span class="desc">Plano para visitas y proveedores, disponible con el QR del ingreso.</span></span>
-      <a href="https://clubdecampolaeugenia.github.io/mapa-la-eugenia/">Abrir el plano</a>
+      <span class="texto"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 7 11 7 11Z" fill="none" stroke="currentColor" stroke-width="2"></path><circle cx="12" cy="10" r="2.3" fill="currentColor"></circle></svg></span><span><strong>Cómo llegar</strong><span class="desc">Plano para visitas y proveedores, disponible con el QR del ingreso.</span></span></span>
+      <a class="boton-chip" href="https://clubdecampolaeugenia.github.io/mapa-la-eugenia/">Abrir el plano</a>
     </li>
     <li>
-      <span><strong>Movimiento de tesorería</strong><span class="desc">Resumen mensual de ingresos y egresos del club.</span></span>
-      <a href="https://clubdecampolaeugenia.github.io/tesoreria-la-eugenia/">Ver el último mes</a>
+      <span class="texto"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"></rect><path d="M3 10h18" stroke="currentColor" stroke-width="2"></path></svg></span><span><strong>Movimiento de tesorería</strong><span class="desc">Resumen mensual de ingresos y egresos del club.</span></span></span>
+      <a class="boton-chip" href="https://clubdecampolaeugenia.github.io/tesoreria-la-eugenia/">Ver el último mes</a>
     </li>
     <li>
-      <span><strong>Zonas de mantenimiento</strong><span class="desc">Cómo se organiza el mantenimiento del barrio y el cronograma de cada zona.</span></span>
-      <a href="https://clubdecampolaeugenia.github.io/zonas.de.mantenimiento/">Ver las zonas</a>
+      <span class="texto"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"></rect><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"></rect><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"></rect><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"></rect></svg></span><span><strong>Zonas de mantenimiento</strong><span class="desc">Cómo se organiza el mantenimiento del barrio y el cronograma de cada zona.</span></span></span>
+      <a class="boton-chip" href="https://clubdecampolaeugenia.github.io/zonas.de.mantenimiento/">Ver las zonas</a>
     </li>
     <li>
-      <span><strong>Reglamentos y estatutos</strong><span class="desc">Estatuto social y reglamentos de uso de las instalaciones.</span></span>
-      <a href="https://clubdecampolaeugenia.taplink.site/">Consultar</a>
+      <span class="texto"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="2"></path><path d="M14 3v5h5" fill="none" stroke="currentColor" stroke-width="2"></path><path d="M9 13h6M9 17h6" stroke="currentColor" stroke-width="1.6"></path></svg></span><span><strong>Reglamentos y estatutos</strong><span class="desc">Estatuto social y reglamentos de uso de las instalaciones.</span></span></span>
+      <a class="boton-chip" href="https://clubdecampolaeugenia.taplink.site/">Consultar</a>
     </li>
   </ul>
   <p class="nota-chica">¿Lo querés a un toque? <a href="https://www.youtube.com/shorts/sUg4Yj5BGeY" style="font-weight:700" target="_blank" rel="noopener noreferrer">Agregalo a la pantalla de tu celular</a>.</p>
@@ -505,10 +550,10 @@ details[open] .chev{ transform:rotate(180deg); }
 <section class="contenedor" id="club">
   <p class="eyebrow">05 · Vivir el club</p>
   <ul class="lista-herramientas">
-    <li><span><strong>Salón de eventos.</strong> <span class="desc" style="display:inline">Para festejos y reuniones. La reserva se consulta por WhatsApp, a través del Centro de Gestión.</span></span><a href="https://clubdecampolaeugenia.taplink.site/">Abrir el Centro de Gestión</a></li>
-    <li><span><strong>Temporada de pileta.</strong> <span class="desc" style="display:inline">Abre en diciembre, con colonia de vacaciones. Fechas y horarios, en LA EUGE informa.</span></span></li>
-    <li><span><strong>Cantina de Doña Negra.</strong> <span class="desc" style="display:inline">Concesionada.</span></span><a href="https://wa.me/5493764708076">+54 9 3764 708076</a></li>
-    <li><span><strong>Gimnasio La Eugenia.</strong> <span class="desc" style="display:inline">Concesionado, a cargo de Pablo Fackelmann.</span></span><a href="https://wa.me/5492267636147">+54 9 2267 636147</a></li>
+    <li><span class="texto"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 7 11 7 11Z" fill="none" stroke="currentColor" stroke-width="2"></path><circle cx="12" cy="10" r="2.3" fill="currentColor"></circle></svg></span><span><strong>Salón de eventos.</strong> <span class="desc">Para festejos y reuniones. La reserva se consulta por WhatsApp, a través del Centro de Gestión.</span></span></span><a class="boton-chip" href="https://clubdecampolaeugenia.taplink.site/">Abrir el Centro de Gestión</a></li>
+    <li><span class="texto"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"></rect><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2"></path></svg></span><span><strong>Temporada de pileta.</strong> <span class="desc">Abre en diciembre, con colonia de vacaciones. Fechas y horarios, en LA EUGE informa.</span></span></span></li>
+    <li><span class="texto"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 7 11 7 11Z" fill="none" stroke="currentColor" stroke-width="2"></path><circle cx="12" cy="10" r="2.3" fill="currentColor"></circle></svg></span><span><strong>Cantina de Doña Negra.</strong> <span class="desc">Concesionada.</span></span></span><a class="boton-chip" href="https://wa.me/5493764708076"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.35 2 11.7c0 1.85.53 3.58 1.45 5.06L2 22l5.4-1.4a10.1 10.1 0 0 0 4.6 1.1c5.52 0 10-4.35 10-9.7S17.52 2 12 2Zm0 17.7c-1.5 0-2.9-.4-4.12-1.1l-.3-.17-3.2.83.86-3.1-.2-.32A7.9 7.9 0 0 1 4 11.7C4 7.45 7.58 4 12 4s8 3.45 8 7.7-3.58 8-8 8Z" fill="currentColor"></path><path d="M9.1 8.24c-.19-.42-.38-.43-.56-.44h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08s.89 2.41 1.02 2.58c.13.17 1.76 2.68 4.26 3.76.59.25 1.06.4 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29-.25-.13-1.47-.73-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.65.81-.79.97-.15.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.44-.06-.13-.55-1.35-.76-1.84Z" fill="currentColor"></path></svg></span> +54 9 3764 708076</a></li>
+    <li><span class="texto"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 7 11 7 11Z" fill="none" stroke="currentColor" stroke-width="2"></path><circle cx="12" cy="10" r="2.3" fill="currentColor"></circle></svg></span><span><strong>Gimnasio La Eugenia.</strong> <span class="desc">Concesionado, a cargo de Pablo Fackelmann.</span></span></span><a class="boton-chip" href="https://wa.me/5492267636147"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.35 2 11.7c0 1.85.53 3.58 1.45 5.06L2 22l5.4-1.4a10.1 10.1 0 0 0 4.6 1.1c5.52 0 10-4.35 10-9.7S17.52 2 12 2Zm0 17.7c-1.5 0-2.9-.4-4.12-1.1l-.3-.17-3.2.83.86-3.1-.2-.32A7.9 7.9 0 0 1 4 11.7C4 7.45 7.58 4 12 4s8 3.45 8 7.7-3.58 8-8 8Z" fill="currentColor"></path><path d="M9.1 8.24c-.19-.42-.38-.43-.56-.44h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08s.89 2.41 1.02 2.58c.13.17 1.76 2.68 4.26 3.76.59.25 1.06.4 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29-.25-.13-1.47-.73-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.65.81-.79.97-.15.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.44-.06-.13-.55-1.35-.76-1.84Z" fill="currentColor"></path></svg></span> +54 9 2267 636147</a></li>
   </ul>
   <p class="nota-chica">Para mostrar el club a quien quieras, <a href="https://clubdecampolaeugenia.github.io/" style="font-weight:700">nuestra web es la carta de presentación</a>.</p>
 </section>
@@ -520,16 +565,16 @@ details[open] .chev{ transform:rotate(180deg); }
 
   <div class="fichas">
     <div class="ficha">
-      <p class="rotulo">Administración y Cobranzas</p>
+      <div class="fila-cabecera" style="margin-bottom:2px"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle><path d="M4 20c0-4 4-6 8-6s8 2 8 6" fill="none" stroke="currentColor" stroke-width="2"></path></svg></span><p class="rotulo" style="margin:0">Administración y Cobranzas</p></div>
       <p class="nombre">Raúl O. Toloza</p>
       <p class="rol">Socio a cargo: facturación, pagos y estado de cuenta.</p>
-      <div class="links"><a href="https://wa.me/5493764603432">+54 9 3764 60-3432</a><a href="#" id="linkAgendarRaul">Agendar</a></div>
+      <div class="links"><a class="boton-chip" href="https://wa.me/5493764603432"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.35 2 11.7c0 1.85.53 3.58 1.45 5.06L2 22l5.4-1.4a10.1 10.1 0 0 0 4.6 1.1c5.52 0 10-4.35 10-9.7S17.52 2 12 2Zm0 17.7c-1.5 0-2.9-.4-4.12-1.1l-.3-.17-3.2.83.86-3.1-.2-.32A7.9 7.9 0 0 1 4 11.7C4 7.45 7.58 4 12 4s8 3.45 8 7.7-3.58 8-8 8Z" fill="currentColor"></path><path d="M9.1 8.24c-.19-.42-.38-.43-.56-.44h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08s.89 2.41 1.02 2.58c.13.17 1.76 2.68 4.26 3.76.59.25 1.06.4 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29-.25-.13-1.47-.73-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.65.81-.79.97-.15.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.44-.06-.13-.55-1.35-.76-1.84Z" fill="currentColor"></path></svg></span> +54 9 3764 60-3432</a><a class="boton-chip" href="#" id="linkAgendarRaul"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"></rect><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2"></path></svg></span> Agendar</a></div>
     </div>
     <div class="ficha">
-      <p class="rotulo">Intendencia</p>
+      <div class="fila-cabecera" style="margin-bottom:2px"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle><path d="M4 20c0-4 4-6 8-6s8 2 8 6" fill="none" stroke="currentColor" stroke-width="2"></path></svg></span><p class="rotulo" style="margin:0">Intendencia</p></div>
       <p class="nombre">Fernanda Magni</p>
       <p class="rol">Área operativa: el nexo diario en mantenimiento y espacios comunes.</p>
-      <div class="links"><a href="https://wa.me/5491157603711">+54 9 11 5760-3711</a><a href="#" id="linkAgendarFernanda">Agendar</a></div>
+      <div class="links"><a class="boton-chip" href="https://wa.me/5491157603711"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.35 2 11.7c0 1.85.53 3.58 1.45 5.06L2 22l5.4-1.4a10.1 10.1 0 0 0 4.6 1.1c5.52 0 10-4.35 10-9.7S17.52 2 12 2Zm0 17.7c-1.5 0-2.9-.4-4.12-1.1l-.3-.17-3.2.83.86-3.1-.2-.32A7.9 7.9 0 0 1 4 11.7C4 7.45 7.58 4 12 4s8 3.45 8 7.7-3.58 8-8 8Z" fill="currentColor"></path><path d="M9.1 8.24c-.19-.42-.38-.43-.56-.44h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08s.89 2.41 1.02 2.58c.13.17 1.76 2.68 4.26 3.76.59.25 1.06.4 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29-.25-.13-1.47-.73-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.65.81-.79.97-.15.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.44-.06-.13-.55-1.35-.76-1.84Z" fill="currentColor"></path></svg></span> +54 9 11 5760-3711</a><a class="boton-chip" href="#" id="linkAgendarFernanda"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"></rect><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2"></path></svg></span> Agendar</a></div>
     </div>
   </div>
 
