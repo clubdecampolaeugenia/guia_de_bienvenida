@@ -61,11 +61,11 @@ img{max-width:100%; display:block;}
 .contenedor{max-width:760px; margin:0 auto; padding:0 20px;}
 .eyebrow{
   margin:0 0 8px; font-size:11px; font-weight:700; letter-spacing:.22em;
-  text-transform:uppercase; color:var(--gris);
+  text-transform:uppercase; color:var(--tinta);
 }
 h2{
-  font-family:'Fraunces', Georgia, serif; font-weight:500;
-  font-size:var(--fs-h2); line-height:1.2; color:var(--petroleo); margin:0 0 8px;
+  font-family:'Fraunces', Georgia, serif; font-weight:440;
+  font-size:var(--fs-h2); line-height:1.2; color:var(--petroleo); margin:8px 0 0;
 }
 .cristina, .wordmark{
   font-family:'ChristieBrand', Georgia, serif; font-weight:400; font-style:normal;
@@ -85,8 +85,12 @@ h2{
 .boton-outline{background:transparent; border:2px solid var(--petroleo); color:var(--petroleo);}
 .boton-outline--claro{border-color:var(--hueso); color:var(--hueso);}
 .boton-lima{background:var(--lima); color:var(--petroleo);}
-section{padding:76px 0 0;}
-section:first-of-type{padding-top:0;}
+.seccion{ padding-top:100px; padding-bottom:100px; }
+@media(max-width:760px){ .seccion{ padding-top:72px; padding-bottom:72px; } }
+@media(max-width:480px){ .seccion{ padding-top:60px; padding-bottom:60px; } }
+.seccion--sin-top{ padding-top:0; }
+.encabezado{ margin-bottom:var(--sp-xl); }
+.encabezado > *:last-child{ margin-bottom:0; }
 
 /* ══════════════ Header (markup y CSS tal cual el sitio público; ══════════════
    solo se adaptaron los links del menú para apuntar a las secciones de
@@ -184,11 +188,11 @@ section:first-of-type{padding-top:0;}
 }
 
 /* ══════════════ Pie (markup y CSS tal cual el sitio público) ══════════════ */
-.pie{ background:var(--petroleo); color:var(--hueso); padding:72px 0 96px; margin-top:72px; }
+.pie{ background:var(--petroleo); color:var(--hueso); padding:72px 0 96px; }
 .pie__inner{ width:min(1180px, calc(100% - 48px)); margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; }
 .pie__marca .club-de-campo{ display:block; font-size:11px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:rgba(245,243,236,.7); margin-top:14px; }
 .pie__marca .marca{ display:block; font-size:clamp(2.4rem, 2rem + 3vw, 4.2rem); line-height:1; margin-top:8px; }
-.pie__direccion{ margin:26px 0 0; font-size:14px; line-height:1.7; color:rgba(245,243,236,.7); max-width:34ch; }
+.pie__direccion{ margin:26px 0 0; font-size:15px; line-height:1.7; color:rgba(245,243,236,.7); max-width:34ch; }
 .pie__contactos{ display:grid; grid-template-columns:1fr 1fr; gap:28px 32px; }
 .pie__dato{ display:flex; align-items:center; gap:14px; text-decoration:none; color:var(--hueso); }
 .pie__icono{ flex:0 0 auto; }
@@ -196,7 +200,7 @@ section:first-of-type{padding-top:0;}
 .pie__dato:hover .pie__icono{ transform:scale(1.1); }
 .pie__dato-texto{ display:flex; flex-direction:column; gap:4px; min-width:0; }
 .pie__dato-texto strong{ font-weight:600; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:rgba(245,243,236,.6); }
-.pie__dato-texto span{ font-size:14.5px; overflow-wrap:anywhere; }
+.pie__dato-texto span{ font-size:15px; overflow-wrap:anywhere; }
 .pie__dato:hover .pie__dato-texto span{ color:var(--naranja); }
 .pie__dato--instagram{ padding-bottom:8px; }
 @media(max-width:760px){
@@ -230,29 +234,33 @@ section:first-of-type{padding-top:0;}
 /* ══════════════ 01 Tu lugar ══════════════ */
 .tabs{ display:inline-flex; gap:4px; padding:4px; background:var(--crema); border-radius:var(--r-pill); margin-bottom:18px; }
 .tabs button{
-  min-height:40px; padding:0 18px; border-radius:var(--r-pill); border:0;
+  min-height:44px; padding:0 18px; border-radius:var(--r-pill); border:0; white-space:nowrap;
   font:700 14px 'Karla', sans-serif; cursor:pointer; background:transparent; color:var(--petroleo);
+  transition:background var(--dur-fast) var(--ease-motion), color var(--dur-fast) var(--ease-motion);
 }
-.tabs button[aria-selected="true"]{ background:var(--petroleo); color:var(--hueso); }
+.tabs button[aria-selected="true"]{ background:var(--lima); color:var(--petroleo); }
+@media(max-width:480px){ .tabs{ display:flex; width:100%; } .tabs button{ flex:1; } }
 .panel-perfil p{ line-height:1.7; margin:0 0 12px; }
 .recuadro{ line-height:1.7; padding:16px 18px; background:var(--crema); border-radius:var(--r-md); margin:0; }
 .recuadro strong{ color:var(--petroleo); }
-.lista-pasos{ list-style:none; margin:32px 0 0; padding:0; border-top:1px solid rgba(19,84,87,.14); }
-.lista-pasos li{ display:flex; gap:14px; align-items:baseline; padding:14px 0; border-bottom:1px solid rgba(19,84,87,.14); }
-.lista-pasos .num{ font-family:'Fraunces', Georgia, serif; color:#b0822a; font-size:20px; }
-.lista-pasos .txt{ line-height:1.6; }
-.nota-chica{ margin:12px 0 0; font-size:14px; color:var(--gris); line-height:1.6; }
+.lista-pasos{ list-style:none; margin:32px 0 0; padding:0; }
+.lista-pasos li{ display:flex; gap:18px; align-items:center; padding:22px 0; border-bottom:1px solid rgba(19,84,87,.12); }
+.lista-pasos li:last-child{ border-bottom:none; }
+.lista-pasos .num{ font-family:'Fraunces', Georgia, serif; font-weight:700; font-size:34px; line-height:1; color:var(--petroleo); flex:0 0 auto; width:38px; }
+.lista-pasos .txt{ line-height:1.65; }
+@media(max-width:480px){ .lista-pasos .num{ font-size:30px; } }
+.nota-chica{ margin:12px 0 0; font-size:15px; color:var(--tinta); line-height:1.6; }
 .titulo-sub{ margin:32px 0 10px; font-weight:700; color:var(--petroleo); }
 
 /* ══════════════ 02 Comunicación ══════════════ */
-.franja{ background:var(--crema); padding:56px 0; }
-.tarjeta-oscura{ background:var(--petroleo); color:var(--hueso); border-radius:var(--r-lg); padding:22px 24px; margin-bottom:14px; }
+.franja{ background:var(--crema); }
+.tarjeta-oscura{ background:var(--petroleo); color:var(--hueso); border-radius:var(--r-lg); padding:var(--sp-lg); margin-bottom:14px; box-shadow:var(--shadow-1); }
 .tarjeta-oscura .rotulo{ margin:0 0 4px; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--lima); font-weight:700; }
-.tarjeta-oscura .titulo{ margin:0 0 6px; font-family:'Fraunces', Georgia, serif; font-size:22px; }
+.tarjeta-oscura .titulo{ margin:0 0 12px; font-family:'Fraunces', Georgia, serif; font-weight:440; font-size:20px; color:var(--hueso); }
 .tarjeta-oscura a{ color:var(--lima); font-weight:700; word-break:break-all; }
-.tarjeta-clara{ background:var(--hueso); border-radius:var(--r-lg); padding:22px 24px; margin-bottom:14px; }
-.tarjeta-clara .rotulo{ margin:0 0 4px; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gris); font-weight:700; }
-.tarjeta-clara .titulo{ margin:0 0 12px; font-family:'Fraunces', Georgia, serif; font-size:22px; color:var(--petroleo); }
+.tarjeta-clara{ background:var(--verdecl); border-radius:var(--r-lg); padding:var(--sp-lg); margin-bottom:14px; }
+.tarjeta-clara .rotulo{ margin:0 0 4px; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--petroleo); font-weight:700; }
+.tarjeta-clara .titulo{ margin:0 0 12px; font-family:'Fraunces', Georgia, serif; font-weight:440; font-size:20px; color:var(--petroleo); }
 .lista-filas{ background:var(--hueso); border-radius:var(--r-lg); padding:6px 24px; }
 .fila{ padding:16px 0; border-bottom:1px solid rgba(19,84,87,.14); }
 .fila:last-child{ border-bottom:0; }
@@ -263,37 +271,60 @@ details > summary::-webkit-details-marker{ display:none; }
 details[open] .chev{ transform:rotate(180deg); }
 .chev{ flex:0 0 auto; transition:transform .3s; }
 .chips{ display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
-.chip{ padding:8px 14px; border-radius:var(--r-pill); background:var(--petroleo); color:var(--hueso); text-decoration:none; font-size:14px; }
+.chip{ padding:8px 14px; border-radius:var(--r-pill); background:var(--petroleo); color:var(--hueso); text-decoration:none; font-size:15px; }
+.chip strong{ color:inherit; }
 
 /* ══════════════ 03 Cuota ══════════════ */
 .tarjeta-blanca{ background:var(--blanco); border-radius:var(--r-lg); padding:22px 24px; box-shadow:var(--shadow-1); }
 .tarjeta-blanca dl{ margin:0; display:grid; grid-template-columns:max-content minmax(0,1fr); gap:8px 16px; font-size:15px; }
-.tarjeta-blanca dt{ color:var(--gris); }
+.tarjeta-blanca dt{ color:var(--tinta); }
 .tarjeta-blanca dd{ margin:0; }
 .acciones{ display:flex; gap:8px; flex-wrap:wrap; margin-top:18px; }
 
 /* ══════════════ 04 CGV ══════════════ */
-.cgv-top{ display:flex; gap:20px; align-items:center; flex-wrap:wrap; }
-.cgv-top__texto{ flex:999 1 320px; min-width:0; }
-.cgv-video{
-  flex:0 0 120px; position:relative; display:block; aspect-ratio:9/16;
-  border-radius:16px; overflow:hidden; background:var(--petroleo); text-decoration:none;
+.cgv-foto{ display:block; position:relative; border-radius:var(--r-lg); overflow:hidden; height:200px; margin-bottom:22px; text-decoration:none; }
+.cgv-foto img{ width:100%; height:100%; object-fit:cover; }
+.cgv-foto__img{ position:absolute; inset:0; }
+.cgv-foto__img--blur{ filter:blur(5px) saturate(.9); -webkit-mask-image:radial-gradient(circle at 50% 50%, transparent 0%, transparent 28%, rgba(0,0,0,.85) 65%, #000 100%); mask-image:radial-gradient(circle at 50% 50%, transparent 0%, transparent 28%, rgba(0,0,0,.85) 65%, #000 100%); }
+.cgv-foto__velo{ position:absolute; inset:0; background:radial-gradient(circle at 50% 48%, rgba(19,84,87,.32) 0%, rgba(19,84,87,.56) 55%, rgba(19,84,87,.74) 100%); }
+.cgv-hub{ position:absolute; inset:0; }
+.cgv-hub__lineas{ position:absolute; inset:0; width:100%; height:100%; }
+.cgv-hub__lineas line{ stroke:rgba(245,243,236,.5); stroke-width:1.3; stroke-dasharray:2.5 4; stroke-linecap:round; vector-effect:non-scaling-stroke; }
+.cgv-hub__nodo{ position:absolute; display:flex; flex-direction:column; align-items:center; gap:6px; transform:translate(-50%,-50%); text-align:center; }
+.cgv-hub__nodo--centro{ left:50%; top:50%; }
+.cgv-hub__nodo--1{ left:16%; top:20%; }
+.cgv-hub__nodo--2{ left:84%; top:20%; }
+.cgv-hub__nodo--3{ left:15%; top:84%; }
+.cgv-hub__nodo--4{ left:85%; top:84%; }
+.cgv-hub__punto{ width:8px; height:8px; border-radius:50%; background:var(--hueso); box-shadow:0 0 0 4px rgba(245,243,236,.16); }
+.cgv-hub__punto--centro{ width:15px; height:15px; background:var(--lima); box-shadow:0 0 0 7px rgba(196,223,87,.22); }
+.cgv-hub__etiqueta{ font-family:'Karla', sans-serif; font-size:11px; font-weight:700; letter-spacing:.01em; color:var(--hueso); text-shadow:0 1px 3px rgba(19,84,87,.95); line-height:1.15; white-space:nowrap; }
+.cgv-hub__etiqueta--centro{ font-size:12px; color:var(--lima); white-space:normal; max-width:76px; }
+@media(max-width:480px){
+  .cgv-hub__etiqueta{ font-size:9.5px; }
+  .cgv-hub__nodo--1{ left:17%; top:17%; }
+  .cgv-hub__nodo--2{ left:83%; top:17%; }
+  .cgv-hub__nodo--3{ left:16%; top:87%; }
+  .cgv-hub__nodo--4{ left:84%; top:87%; }
 }
-.cgv-video img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.65; }
-.cgv-video .play{
-  position:absolute; inset:0; display:flex; flex-direction:column; align-items:center;
-  justify-content:center; gap:8px; color:var(--hueso); font-size:12px; font-weight:700;
-}
-.cgv-video .circulo{ width:40px; height:40px; border-radius:50%; background:var(--lima); display:flex; align-items:center; justify-content:center; }
+.cgv-top__texto h2{ margin-bottom:14px; }
+.boton--grande{ font-size:16px; padding:0 28px; min-height:52px; }
+@media(max-width:480px){ .boton--grande{ width:100%; } }
+.cgv-video-link{ display:inline-flex; align-items:center; gap:8px; margin-top:16px; color:var(--petroleo); }
+.cgv-video-link .circulo{ width:28px; height:28px; border-radius:50%; background:var(--lima); display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; }
+.cgv-video-link .circulo svg{ width:12px; height:12px; }
 .lista-herramientas{ list-style:none; margin:24px 0 0; padding:0; border-top:1px solid rgba(19,84,87,.14); }
-.lista-herramientas li{ padding:18px 0; border-bottom:1px solid rgba(19,84,87,.14); display:flex; justify-content:space-between; gap:14px; align-items:center; flex-wrap:wrap; }
-.lista-herramientas .texto{ display:flex; align-items:flex-start; gap:14px; flex:999 1 240px; min-width:0; }
+.lista-herramientas li{ padding:18px 0; border-bottom:1px solid rgba(19,84,87,.14); display:flex; flex-direction:column; align-items:flex-start; gap:10px; }
+.lista-herramientas li > a{ margin-left:36px; }
+@media(max-width:480px){ .lista-herramientas li > a{ margin-left:0; } }
+.lista-herramientas .texto{ display:flex; align-items:flex-start; gap:14px; width:100%; }
 .lista-herramientas strong{ color:var(--petroleo); display:block; }
-.lista-herramientas .desc{ display:block; font-size:15px; line-height:1.55; margin-top:2px; }
-.ico{ width:36px; height:36px; border-radius:50%; flex:0 0 auto; display:flex; align-items:center; justify-content:center; }
-.ico svg{ width:18px; height:18px; }
-.ico--claro{ background:var(--crema); color:var(--petroleo); }
-.ico--oscuro{ background:rgba(245,243,236,.16); color:var(--lima); }
+.lista-herramientas .desc{ display:block; font-size:15px; line-height:1.55; margin-top:5px; }
+.ico{ width:22px; height:22px; flex:0 0 auto; display:inline-flex; align-items:center; justify-content:center; }
+.ico svg{ width:22px; height:22px; }
+.ico svg *{ stroke-width:2; }
+.ico--claro{ color:var(--petroleo); }
+.ico--oscuro{ color:var(--lima); }
 .fila-cabecera{ display:flex; align-items:center; gap:14px; margin-bottom:10px; }
 .fila-cabecera .titulo, .fila-cabecera .rotulo{ margin:0; }
 .boton-chip{ display:inline-flex; align-items:center; gap:6px; white-space:nowrap; flex:0 0 auto; min-height:38px; padding:0 16px; border-radius:var(--r-pill); border:1.5px solid var(--petroleo); color:var(--petroleo)!important; font:700 13px 'Karla', sans-serif; text-decoration:none; }
@@ -302,34 +333,56 @@ details[open] .chev{ transform:rotate(180deg); }
 .boton-chip--claro:hover{ background:var(--hueso); color:var(--petroleo)!important; }
 .boton-chip .ico{ width:18px; height:18px; background:transparent!important; color:inherit!important; }
 .boton-chip .ico svg{ width:16px; height:16px; }
-.bloque-lote{ margin-top:28px; background:var(--petroleo); color:var(--hueso); border-radius:var(--r-lg); padding:22px 24px; }
-.bloque-lote .titulo{ margin:0 0 4px; font-family:'Fraunces', Georgia, serif; font-size:20px; }
-.bloque-lote .sub{ margin:0 0 14px; font-size:15px; line-height:1.6; color:#e6efe5; }
-.lote-form{ display:flex; gap:10px; flex-wrap:wrap; align-items:flex-end; }
-.lote-form label{ display:flex; flex-direction:column; gap:4px; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
-.lote-form input{
-  width:72px; min-height:44px; border-radius:12px; border:2px solid var(--lima);
-  background:var(--hueso); color:var(--tinta); font:700 18px 'Karla', sans-serif;
-  text-align:center; text-transform:uppercase;
-}
-.lote-form .resultado{ margin:0 0 10px; font-weight:700; color:var(--lima); min-height:1.2em; }
-.lote-acciones{ display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
 
 /* ══════════════ 06 Organización ══════════════ */
 .fichas{ display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:12px; }
 .ficha{ background:var(--crema); border-radius:var(--r-md); padding:18px 20px; }
-.ficha .rotulo{ margin:0; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--gris); font-weight:700; }
-.ficha .nombre{ margin:4px 0 2px; font-family:'Fraunces', Georgia, serif; font-size:19px; color:var(--petroleo); }
-.ficha .rol{ margin:0 0 10px; font-size:14px; line-height:1.5; }
-.ficha .links{ display:flex; gap:12px; flex-wrap:wrap; font-size:14px; font-weight:700; }
+.ficha .rotulo{ margin:0; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--tinta); font-weight:700; }
+.ficha .nombre{ margin:6px 0 6px; font-family:'Fraunces', Georgia, serif; font-size:20px; color:var(--petroleo); }
+.ficha .rol{ margin:0 0 10px; font-size:15px; line-height:1.5; }
+.ficha .links{ display:flex; gap:12px; flex-wrap:wrap; font-size:15px; font-weight:700; }
 .desplegables{ margin-top:12px; border-top:1px solid rgba(19,84,87,.14); }
 .desplegables details{ padding:14px 0; border-bottom:1px solid rgba(19,84,87,.14); }
 .desplegables summary{ font-weight:700; color:var(--petroleo); }
 .desplegables dl{ margin:12px 0 0; display:grid; grid-template-columns:max-content minmax(0,1fr); gap:6px 16px; font-size:15px; }
-.desplegables dt{ color:var(--gris); }
+.desplegables dt{ color:var(--petroleo); font-weight:700; }
 .desplegables dd{ margin:0; }
 .desplegables p{ margin:10px 0 0; font-size:15px; line-height:1.6; }
 
+/* ══════════════ 05 Fotos reales ══════════════ */
+.fotos-club{ margin-bottom:var(--sp-xl); }
+.fotos-club img{ width:100%; height:240px; object-fit:cover; border-radius:var(--r-lg); }
+@media(max-width:480px){ .fotos-club img{ height:200px; } }
+
+/* ══════════════ Animación de aparición ══════════════ */
+.reveal{ opacity:0; transform:translateY(16px); transition:opacity 620ms var(--ease-motion), transform 620ms var(--ease-motion); }
+.reveal.is-visible{ opacity:1; transform:translateY(0); }
+@media(prefers-reduced-motion:reduce){ .reveal{ opacity:1!important; transform:none!important; transition:none!important; } }
+
+.parrafo{ margin:0 0 var(--sp-sm); line-height:1.65; font-size:15px; }
+.parrafo:last-child{ margin-bottom:0; }
+.parrafo--grande{ font-size:16px; line-height:1.7; }
+.parrafo--detalle{ margin:12px 0; font-size:15px; line-height:1.6; }
+.mb-0{ margin-bottom:0!important; }
+.mb-xs{ margin-bottom:var(--sp-xs); }
+.mb-md{ margin-bottom:var(--sp-md); }
+.mt-xs{ margin-top:var(--sp-xs); }
+.link-fuerte{ font-weight:700; }
+.dato-fuerte{ font-weight:700; }
+.dato-numero{ font-variant-numeric:tabular-nums; word-break:break-all; }
+.resaltado{ font-family:'Fraunces', Georgia, serif; color:var(--petroleo); }
+.resumen-fila{ display:flex; align-items:center; gap:14px; }
+.resumen-titulo{ display:block; font-weight:700; color:var(--petroleo); }
+.texto-chico{ font-size:15px; }
+.fila-cabecera--mini{ margin-bottom:4px; }
+.fila .links{ display:flex; gap:10px; flex-wrap:wrap; }
+.fila details{ margin-top:12px; }
+.fila-top{ display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; }
+@media(max-width:480px){ .fila-top{ flex-direction:column; align-items:flex-start; } .fila-top > a{ align-self:flex-start; } }
+.fila--sin-borde{ border-bottom:0; }
+.no-partir{ white-space:nowrap; }
+strong{ color:var(--petroleo); }
+.fila-cabecera p{ font-weight:700; color:var(--petroleo); margin:0; }
 .vhid{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
 </style>
 </head>
@@ -353,7 +406,7 @@ details[open] .chev{ transform:rotate(180deg); }
         <a href="#cgv">Herramientas</a>
         <a href="#organizacion">Organización</a>
       </nav>
-      <a class="site-header__cta" href="https://www.google.com/maps/dir/?api=1&destination=Club%20de%20Campo%20La%20Eugenia%2C%20Ruta%20Provincial%20105%20Km%205%2C%20Garup%C3%A1%2C%20Misiones" target="_blank" rel="noopener noreferrer">Cómo llegar</a>
+      <a class="site-header__cta" href="https://clubdecampolaeugenia.taplink.site/" target="_blank" rel="noopener noreferrer">Centro de Gestión Vecinal</a>
       <button class="site-header__toggle" id="siteHeaderToggle" type="button" aria-expanded="false" aria-controls="siteHeaderPanel" aria-label="Abrir menú">
         <span class="site-header__toggle-bar"></span>
         <span class="site-header__toggle-bar"></span>
@@ -367,7 +420,7 @@ details[open] .chev{ transform:rotate(180deg); }
       <a href="#cuota">Cuota</a>
       <a href="#cgv">Herramientas</a>
       <a href="#organizacion">Organización</a>
-      <a href="https://www.google.com/maps/dir/?api=1&destination=Club%20de%20Campo%20La%20Eugenia%2C%20Ruta%20Provincial%20105%20Km%205%2C%20Garup%C3%A1%2C%20Misiones" target="_blank" rel="noopener noreferrer">Cómo llegar</a>
+      <a href="https://clubdecampolaeugenia.taplink.site/" target="_blank" rel="noopener noreferrer">Centro de Gestión Vecinal</a>
     </nav>
   </div>
 </header>
@@ -378,89 +431,92 @@ details[open] .chev{ transform:rotate(180deg); }
     <img src="https://clubdecampolaeugenia.github.io/fotos/hero-01-fachada.jpg" alt="El salón principal del Club de Campo La Eugenia">
     <div class="portada__velo"></div>
     <div class="portada__texto">
-      <p class="portada__etiqueta">Para socios e inquilinos</p>
+      <p class="portada__etiqueta">Guía de bienvenida</p>
       <h1 class="portada__titulo">Te damos la bienvenida a<span class="wordmark">La Eugenia</span></h1>
       <div class="acento" aria-hidden="true"><span></span><span></span></div>
     </div>
   </div>
-  <p class="portada__nota">Pensada para quienes ya tienen la cuota social al día. Si todavía no regularizaste tu situación, también es para vos: conocé todo lo que el club tiene para ofrecerte.</p>
+  <p class="portada__nota">Para quienes se suman como socios nuevos al barrio, propietarios o inquilinos.</p>
 </section>
 
 <!-- ══════════════ Introducción ══════════════ -->
-<section class="contenedor">
-  <h2>Un club de campo para vivir en comunidad</h2>
-  <p style="margin:0 0 12px; line-height:1.7">Fundado en 1989 sobre la Ruta Nacional 105, Km 5, en Garupá, el club reúne en siete hectáreas un salón de eventos, pileta, canchas de fútbol, pádel, tenis y fútbol-tenis, playón polideportivo, gimnasio, cantina y el Ecosendero para caminar.</p>
-  <p style="margin:0 0 12px; line-height:1.7">Más allá de sus espacios, acompaña la vida del barrio. Complementa, sin reemplazar, a los servicios públicos: colabora con la iluminación de las calles, interviene puntualmente ante problemas de infraestructura y realiza pedidos formales y colectivos ante el municipio, las reparticiones estatales y las empresas prestadoras de servicios públicos cuando algo afecta a toda la comunidad.</p>
-  <p style="margin:0; line-height:1.7">También recolecta las ponchadas (los restos de poda y jardín que se dejan en bolsas sobre la vereda), sostiene un control visual en el acceso principal y mantiene el cerco perimetral del frente y los laterales. <em style="font-family:'Fraunces', Georgia, serif; color:var(--petroleo)">Un espacio para la convivencia, sostenido por el trabajo de sus propios vecinos.</em></p>
+<section class="seccion contenedor">
+  <div class="encabezado"><h2>Un Club de campo para vivir en comunidad</h2></div>
+  <p class="parrafo parrafo--grande">Fundado en 1989 sobre la Ruta Nacional 105, Km 5, en Garupá, el Club reúne en siete hectáreas un salón de eventos, pileta, canchas de fútbol, pádel, tenis y fútbol-tenis, playón polideportivo, gimnasio, cantina y el Ecosendero para caminar.</p>
+  <p class="parrafo parrafo--grande">Más allá de sus espacios, acompaña la vida del barrio. Complementa, sin reemplazar, a los servicios públicos: colabora con la iluminación de las calles, interviene puntualmente ante problemas de infraestructura y realiza pedidos formales y colectivos ante el municipio, las reparticiones estatales y las empresas prestadoras de servicios públicos cuando algo afecta a toda la comunidad.</p>
+  <p class="parrafo parrafo--grande mb-0">También recolecta las ponchadas (los restos de poda y jardín que se dejan en bolsas sobre la vereda), sostiene un control visual en el acceso principal y mantiene el cerco perimetral del frente y los laterales. <em class="resaltado">Un espacio para la convivencia, sostenido por el trabajo de sus propios vecinos.</em></p>
 </section>
 
-<!-- ══════════════ 01 · Tu lugar en el club ══════════════ -->
-<section class="contenedor" id="tu-lugar">
-  <p class="eyebrow">01 · Tu lugar en el club</p>
+<!-- ══════════════ 01 · Tu lugar en el Club ══════════════ -->
+<section class="seccion seccion--sin-top contenedor" id="tu-lugar">
+  <div class="encabezado"><p class="eyebrow">01 · Tu lugar en el Club</p></div>
   <div class="tabs" role="tablist" aria-label="Perfil">
     <button type="button" role="tab" id="tab-propietario" aria-selected="true" aria-controls="panel-propietario" onclick="elegirPerfil('propietario')">Soy propietario</button>
     <button type="button" role="tab" id="tab-inquilino" aria-selected="false" aria-controls="panel-inquilino" onclick="elegirPerfil('inquilino')">Soy inquilino</button>
   </div>
 
   <div class="panel-perfil" id="panel-propietario" role="tabpanel" aria-labelledby="tab-propietario">
-    <p><strong style="color:var(--petroleo)">Sos socio del club.</strong> El derecho de uso de las instalaciones es para tu grupo familiar, y participás de las decisiones en las asambleas.</p>
+    <p><strong>Sos socio del Club.</strong> El derecho de uso de las instalaciones es para tu grupo familiar, y participás de las decisiones en las asambleas.</p>
     <p class="recuadro"><strong>Si alquilás:</strong> cuando acordás con tu inquilino que él pague la cuota social, el uso pasa a su grupo familiar. Si tenés otros lotes, conservás el uso por los que no alquilás. Cualquier situación distinta se propone y se trata con la institución.</p>
   </div>
   <div class="panel-perfil" id="panel-inquilino" role="tabpanel" aria-labelledby="tab-inquilino" hidden>
-    <p><strong style="color:var(--petroleo)">El club también es tuyo.</strong> El derecho de uso corresponde a un grupo familiar por lote: cuando acordás con el propietario que vos pagás la cuota social, ese derecho es tuyo y de tu familia mientras dure el acuerdo.</p>
-    <p class="recuadro"><strong>Tu vínculo:</strong> lo que acordás con el propietario define tu acceso; con el club tratás tu registro, tus pagos y el día a día. Cualquier situación distinta se propone y se trata con la institución.</p>
+    <p><strong>El Club también es tuyo.</strong> El derecho de uso corresponde a un grupo familiar por lote: cuando acordás con el propietario que vos pagás la cuota social, ese derecho es tuyo y de tu familia mientras dure el acuerdo.</p>
+    <p class="recuadro"><strong>Tu vínculo:</strong> lo que acordás con el propietario define tu acceso; con el Club tratás tu registro, tus pagos y el día a día. Cualquier situación distinta se propone y se trata con la institución.</p>
   </div>
 
   <p class="titulo-sub">Para empezar</p>
   <ol class="lista-pasos">
-    <li><span class="num">1</span><span class="txt">Si todavía no lo hiciste, registrá a tu grupo familiar: <a href="https://drive.google.com/file/d/1A_eL-rxcLjXlPhsVe32zWGJg8o9jFNDm/view" style="font-weight:700">descargá la solicitud</a> y enviala por email.</span></li>
-    <li><span class="num">2</span><span class="txt">Sumate al grupo de WhatsApp LA EUGE informa, a Alertas Vecinales y al boletín mensual.</span></li>
-    <li><span class="num">3</span><span class="txt">Guardá el Centro de Gestión Vecinal en tu celular.</span></li>
+    <li><span class="num">1</span><span class="txt">Si todavía no lo hiciste, registrá a tu grupo familiar: <a href="https://drive.google.com/file/d/1A_eL-rxcLjXlPhsVe32zWGJg8o9jFNDm/view" class="link-fuerte">descargá la solicitud</a> y enviala por email.</span></li>
+    <li><span class="num">2</span><span class="txt">Sumate al grupo de WhatsApp <a class="link-fuerte" href="https://chat.whatsapp.com/GLC2YV7JXICDHdcIQTHN8X?s=cl&amp;p=i&amp;mlu=4&amp;ilr=4&amp;iam=2" target="_blank" rel="noopener noreferrer">LA EUGE informa 📣</a>, nuestro canal oficial de novedades.</span></li>
+    <li><span class="num">3</span><span class="txt">Conocé el <a class="link-fuerte" href="https://clubdecampolaeugenia.taplink.site/" target="_blank" rel="noopener noreferrer">Centro de Gestión Vecinal</a>: es la plataforma de gestión principal del Club, donde encontrás todas sus herramientas.</span></li>
   </ol>
-  <p class="nota-chica">Estamos digitalizando el club paso a paso: algunos trámites todavía se hacen por email.</p>
+  <p class="nota-chica">Estamos digitalizando el Club paso a paso: algunos trámites todavía se hacen por email.</p>
 </section>
 
 <!-- ══════════════ 02 · Cómo nos comunicamos ══════════════ -->
-<section class="franja" id="comunicacion">
+<section class="seccion franja" id="comunicacion">
   <div class="contenedor">
-    <p class="eyebrow">02 · Cómo nos comunicamos</p>
-    <h2>Cada canal, para lo suyo</h2>
-    <p style="margin:0 0 24px; line-height:1.6">El email es nuestro único canal formal. Los demás acompañan la comunicación de todos los días.</p>
+    <div class="encabezado"><p class="eyebrow">02 · Cómo nos comunicamos</p>
+    <h2>Cada canal, para lo suyo</h2></div>
+    <p class="parrafo mb-md">El email es nuestro único canal formal. Los demás acompañan la comunicación de todos los días.</p>
 
-    <div class="tarjeta-oscura">
+    <div class="tarjeta-oscura reveal">
       <p class="rotulo">Canal formal</p>
       <div class="fila-cabecera"><span class="ico ico--oscuro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6Zm2.4-.5 6.1 5 6.1-5H5.4ZM19 7.9l-6.4 5.2a1 1 0 0 1-1.2 0L5 7.9V18h14V7.9Z" fill="currentColor"></path></svg></span><p class="titulo">Email institucional</p></div>
-      <p style="margin:0 0 14px; line-height:1.6; font-size:15px">Notas, presentaciones, reclamos, formularios y comprobantes.</p>
+      <p class="parrafo">Notas, presentaciones, reclamos, formularios y comprobantes.</p>
       <a class="boton-chip boton-chip--claro" href="mailto:clubdecampolaeugenia@gmail.com"><span class="ico ico--oscuro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6Zm2.4-.5 6.1 5 6.1-5H5.4ZM19 7.9l-6.4 5.2a1 1 0 0 1-1.2 0L5 7.9V18h14V7.9Z" fill="currentColor"></path></svg></span> clubdecampolaeugenia@gmail.com</a>
     </div>
 
-    <div class="tarjeta-clara">
+    <div class="tarjeta-clara reveal">
       <p class="rotulo">Un número, dos funciones</p>
-      <div class="fila-cabecera"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.35 2 11.7c0 1.85.53 3.58 1.45 5.06L2 22l5.4-1.4a10.1 10.1 0 0 0 4.6 1.1c5.52 0 10-4.35 10-9.7S17.52 2 12 2Zm0 17.7c-1.5 0-2.9-.4-4.12-1.1l-.3-.17-3.2.83.86-3.1-.2-.32A7.9 7.9 0 0 1 4 11.7C4 7.45 7.58 4 12 4s8 3.45 8 7.7-3.58 8-8 8Z" fill="currentColor"></path><path d="M9.1 8.24c-.19-.42-.38-.43-.56-.44h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08s.89 2.41 1.02 2.58c.13.17 1.76 2.68 4.26 3.76.59.25 1.06.4 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29-.25-.13-1.47-.73-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.65.81-.79.97-.15.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.44-.06-.13-.55-1.35-.76-1.84Z" fill="currentColor"></path></svg></span><p class="titulo">WhatsApp del club</p></div>
-      <p style="margin:0 0 10px; line-height:1.6; font-size:15px"><strong>Grupo oficial de difusión.</strong> LA EUGE informa reporta todas las novedades del barrio y del club. Publica solo la administración.</p>
-      <p style="margin:0 0 14px; line-height:1.6; font-size:15px"><strong>Línea oficial del club, solo WhatsApp.</strong> Te atiende 🙋🏻‍♀️ EugenIA, nuestra asistente virtual, para consultas de rutina y reportes vecinales. Eventualmente puede asistirte un administrador.</p>
+      <div class="fila-cabecera"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.35 2 11.7c0 1.85.53 3.58 1.45 5.06L2 22l5.4-1.4a10.1 10.1 0 0 0 4.6 1.1c5.52 0 10-4.35 10-9.7S17.52 2 12 2Zm0 17.7c-1.5 0-2.9-.4-4.12-1.1l-.3-.17-3.2.83.86-3.1-.2-.32A7.9 7.9 0 0 1 4 11.7C4 7.45 7.58 4 12 4s8 3.45 8 7.7-3.58 8-8 8Z" fill="currentColor"></path><path d="M9.1 8.24c-.19-.42-.38-.43-.56-.44h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08s.89 2.41 1.02 2.58c.13.17 1.76 2.68 4.26 3.76.59.25 1.06.4 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29-.25-.13-1.47-.73-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.65.81-.79.97-.15.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.44-.06-.13-.55-1.35-.76-1.84Z" fill="currentColor"></path></svg></span><p class="titulo">WhatsApp del Club</p></div>
+      <p class="parrafo mb-xs"><strong>Grupo oficial de difusión.</strong> LA EUGE informa 📣 reporta todas las novedades del barrio y del Club. Publica solo la administración.</p>
+      <p class="parrafo"><strong>Línea oficial del Club, solo WhatsApp.</strong> Te atiende EugenIA 🙋🏻‍♀️, nuestra asistente virtual, para consultas de rutina y reportes vecinales. Eventualmente puede asistirte un administrador.</p>
       <a class="boton-chip" href="https://wa.me/5493764113300"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.35 2 11.7c0 1.85.53 3.58 1.45 5.06L2 22l5.4-1.4a10.1 10.1 0 0 0 4.6 1.1c5.52 0 10-4.35 10-9.7S17.52 2 12 2Zm0 17.7c-1.5 0-2.9-.4-4.12-1.1l-.3-.17-3.2.83.86-3.1-.2-.32A7.9 7.9 0 0 1 4 11.7C4 7.45 7.58 4 12 4s8 3.45 8 7.7-3.58 8-8 8Z" fill="currentColor"></path><path d="M9.1 8.24c-.19-.42-.38-.43-.56-.44h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08s.89 2.41 1.02 2.58c.13.17 1.76 2.68 4.26 3.76.59.25 1.06.4 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29-.25-.13-1.47-.73-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.65.81-.79.97-.15.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.44-.06-.13-.55-1.35-.76-1.84Z" fill="currentColor"></path></svg></span> +54 9 3764 11-3300</a>
     </div>
 
     <div class="lista-filas">
       <div class="fila">
-        <div class="fila-cabecera" style="margin-bottom:4px"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11v2a2 2 0 0 0 2 2h1l10 4V5L6 9H5a2 2 0 0 0-2 2Z" fill="currentColor"></path><path d="M19 9a3 3 0 0 1 0 6" fill="none" stroke="currentColor" stroke-width="2"></path></svg></span><p style="font-weight:700; color:var(--petroleo)">Alertas Vecinales</p></div>
+        <div class="fila-cabecera fila-cabecera--mini"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a6 6 0 0 0-6 6v3.5c0 .8-.3 1.6-.9 2.1L4 14.8c-.6.6-.2 1.7.7 1.7h14.6c.9 0 1.3-1.1.7-1.7l-1.1-1.2c-.6-.5-.9-1.3-.9-2.1V8a6 6 0 0 0-6-6Z" fill="none" stroke="currentColor" stroke-width="2"></path><path d="M9.5 19a2.5 2.5 0 0 0 5 0" fill="none" stroke="currentColor" stroke-width="2"></path></svg></span><p>Alertas Vecinales</p></div>
         <p>Grupo dedicado solo a la seguridad del barrio. Tiene normas de uso que podés leer en su descripción.</p>
       </div>
       <div class="fila">
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap">
-          <div class="fila-cabecera" style="margin-bottom:0"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"></rect><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2"></path></svg></span><p style="font-weight:700; color:var(--petroleo)">Boletín mensual</p></div>
+        <div class="fila-top">
+          <div class="fila-cabecera mb-0"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"></rect><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2"></path></svg></span><p>Boletín mensual</p></div>
           <a class="boton-chip" href="https://clubdecampolaeugenia.github.io/boletin-la-eugenia/">Suscribirme</a>
         </div>
-        <p style="margin-top:8px">Llega los primeros días del mes por email: valor de la cuota, movimiento de tesorería, canales de contacto y el resumen de las novedades del mes.</p>
+        <p class="mt-xs">Llega los primeros días del mes por email: valor de la cuota, movimiento de tesorería, canales de contacto y el resumen de las novedades del mes.</p>
       </div>
-      <div class="fila" style="border-bottom:0">
+      <div class="fila fila--sin-borde">
+        <div class="fila-cabecera fila-cabecera--mini"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8Z" fill="currentColor"></path></svg></span><p>Garita de ingreso</p></div>
+        <p class="texto-chico">Visitas, proveedores y correspondencia</p>
+        <div class="links mt-xs">
+          <a class="boton-chip" href="https://wa.me/5491161888188"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.35 2 11.7c0 1.85.53 3.58 1.45 5.06L2 22l5.4-1.4a10.1 10.1 0 0 0 4.6 1.1c5.52 0 10-4.35 10-9.7S17.52 2 12 2Zm0 17.7c-1.5 0-2.9-.4-4.12-1.1l-.3-.17-3.2.83.86-3.1-.2-.32A7.9 7.9 0 0 1 4 11.7C4 7.45 7.58 4 12 4s8 3.45 8 7.7-3.58 8-8 8Z" fill="currentColor"></path><path d="M9.1 8.24c-.19-.42-.38-.43-.56-.44h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08s.89 2.41 1.02 2.58c.13.17 1.76 2.68 4.26 3.76.59.25 1.06.4 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29-.25-.13-1.47-.73-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.65.81-.79.97-.15.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.44-.06-.13-.55-1.35-.76-1.84Z" fill="currentColor"></path></svg></span> +54 9 11 6188-8188</a>
+          <a class="boton-chip" href="#" id="linkAgendarGarita"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"></rect><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2"></path></svg></span> Agendar</a>
+        </div>
         <details>
-          <summary>
-            <span style="display:flex; align-items:center; gap:14px"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8Z" fill="currentColor"></path></svg></span><span><span style="display:block; font-weight:700; color:var(--petroleo)">Garita de ingreso</span><span style="font-size:15px">+54 9 11 6188-8188 · visitas, proveedores y correspondencia</span></span></span>
-            <svg class="chev" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="#135457" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          </summary>
-          <p style="margin:12px 0 12px; font-size:15px; line-height:1.6">Es un servicio de control en el ingreso, prestado por una empresa contratada por el club, que ordena las entradas y salidas del barrio. No es vigilancia integral: no incluye monitoreo del barrio ni seguridad en los domicilios, y la protección de cada lote la define su propietario. Ante una emergencia, llamá primero a los servicios públicos.</p>
+          <summary>Más información sobre el servicio de seguridad<svg class="chev" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="#135457" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
+          <p class="parrafo--detalle">Es un servicio de control en el ingreso, prestado por una empresa contratada por el Club, que ordena las entradas y salidas del barrio. No es vigilancia integral: no incluye monitoreo del barrio ni seguridad en los domicilios, y la protección de cada lote la define su propietario. Ante una emergencia, llamá primero a los servicios públicos.</p>
           <div class="chips">
             <a class="chip" href="tel:911"><strong>911</strong> Policía</a>
             <a class="chip" href="tel:107"><strong>107</strong> Emergencias</a>
@@ -473,16 +529,16 @@ details[open] .chev{ transform:rotate(180deg); }
 </section>
 
 <!-- ══════════════ 03 · La cuota social ══════════════ -->
-<section class="contenedor" id="cuota">
-  <p class="eyebrow">03 · La cuota social</p>
-  <h2>Lo que sostiene al club</h2>
-  <p style="margin:0 0 20px; line-height:1.6">Mantiene las instalaciones, los espacios verdes, el personal y los servicios. Se actualiza todos los meses según el IPC: <a href="https://clubdecampolaeugenia.github.io/cuota-la-eugenia/" style="font-weight:700">consultá la cuota del mes</a>.</p>
+<section class="seccion contenedor" id="cuota">
+  <div class="encabezado"><p class="eyebrow">03 · La cuota social</p>
+  <h2>Lo que sostiene al Club</h2></div>
+  <p class="parrafo mb-md">Mantiene las instalaciones, los espacios verdes, el personal y los servicios. Se actualiza todos los meses según el IPC: <a href="https://clubdecampolaeugenia.github.io/cuota-la-eugenia/" class="link-fuerte">consultá la cuota del mes</a>.</p>
   <div class="tarjeta-blanca">
     <dl>
       <dt>Banco</dt><dd>Credicoop</dd>
       <dt>Titular</dt><dd>La Eugenia Club de Campo</dd>
-      <dt>Alias</dt><dd style="font-weight:700">DELFIN.COCINA.MANTO</dd>
-      <dt>CBU</dt><dd style="font-variant-numeric:tabular-nums; word-break:break-all">1910229855022900048696</dd>
+      <dt>Alias</dt><dd class="dato-fuerte">DELFIN.COCINA.MANTO</dd>
+      <dt>CBU</dt><dd class="dato-numero">1910229855022900048696</dd>
     </dl>
     <div class="acciones">
       <button type="button" class="boton" id="btnCopiarAlias" onclick="copiarAlias()">Copiar alias</button>
@@ -493,85 +549,90 @@ details[open] .chev{ transform:rotate(180deg); }
 </section>
 
 <!-- ══════════════ 04 · Centro de Gestión Vecinal ══════════════ -->
-<section class="contenedor" id="cgv">
-  <p class="eyebrow">04 · Centro de Gestión Vecinal</p>
-  <div class="cgv-top">
-    <div class="cgv-top__texto">
-      <h2>Todo el club, desde tu celular</h2>
-      <p style="margin:0 0 14px; line-height:1.6">Un solo acceso para consultas, trámites, contactos, reglamentos y estatutos.</p>
-      <a class="boton" href="https://clubdecampolaeugenia.taplink.site/">Abrir el Centro de Gestión</a>
-    </div>
-    <a class="cgv-video" href="https://www.youtube.com/shorts/zeeEZM161Jc" aria-label="Ver el video sobre el Centro de Gestión Vecinal" target="_blank" rel="noopener noreferrer">
-      <img src="https://img.youtube.com/vi/zeeEZM161Jc/hqdefault.jpg" alt="">
-      <span class="play"><span class="circulo"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="#135457"></path></svg></span>Ver video</span>
-    </a>
+<section class="seccion franja" id="cgv">
+  <div class="contenedor">
+  <div class="encabezado"><p class="eyebrow">04 · Centro de Gestión Vecinal</p></div>
+  <a class="cgv-foto" href="https://clubdecampolaeugenia.taplink.site/" aria-label="Abrir el Centro de Gestión Vecinal">
+    <img class="cgv-foto__img" src="https://clubdecampolaeugenia.github.io/fotos/hero-07-barrio-aereo.jpg" alt="Vista aérea del barrio La Eugenia" loading="lazy">
+    <img class="cgv-foto__img cgv-foto__img--blur" src="https://clubdecampolaeugenia.github.io/fotos/hero-07-barrio-aereo.jpg" alt="" aria-hidden="true" loading="lazy">
+    <span class="cgv-foto__velo"></span>
+    <span class="cgv-hub" aria-hidden="true">
+      <svg class="cgv-hub__lineas" viewBox="0 0 200 100" preserveAspectRatio="none">
+        <line x1="100" y1="50" x2="32" y2="20"></line>
+        <line x1="100" y1="50" x2="168" y2="20"></line>
+        <line x1="100" y1="50" x2="30" y2="84"></line>
+        <line x1="100" y1="50" x2="170" y2="84"></line>
+      </svg>
+      <span class="cgv-hub__nodo cgv-hub__nodo--centro"><span class="cgv-hub__punto cgv-hub__punto--centro"></span><span class="cgv-hub__etiqueta cgv-hub__etiqueta--centro">CGV</span></span>
+      <span class="cgv-hub__nodo cgv-hub__nodo--1"><span class="cgv-hub__punto"></span><span class="cgv-hub__etiqueta">Consultas</span></span>
+      <span class="cgv-hub__nodo cgv-hub__nodo--2"><span class="cgv-hub__punto"></span><span class="cgv-hub__etiqueta">Trámites</span></span>
+      <span class="cgv-hub__nodo cgv-hub__nodo--3"><span class="cgv-hub__punto"></span><span class="cgv-hub__etiqueta">Contactos</span></span>
+      <span class="cgv-hub__nodo cgv-hub__nodo--4"><span class="cgv-hub__punto"></span><span class="cgv-hub__etiqueta">Reglamentos</span></span>
+    </span>
+  </a>
+  <div class="cgv-top__texto">
+    <h2>Todo el Club, desde tu celular</h2>
+    <p class="parrafo">Un solo acceso para consultas, trámites, contactos, reglamentos y estatutos.</p>
+    <a class="boton boton--grande" href="https://clubdecampolaeugenia.taplink.site/">Abrir el Centro de Gestión Vecinal</a>
+    <a class="cgv-video-link link-fuerte" href="https://www.youtube.com/shorts/zeeEZM161Jc" target="_blank" rel="noopener noreferrer"><span class="circulo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="#135457"></path></svg></span> Ver cómo funciona (1 min)</a>
   </div>
 
   <ul class="lista-herramientas">
     <li>
-      <span class="texto"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11v2a2 2 0 0 0 2 2h1l10 4V5L6 9H5a2 2 0 0 0-2 2Z" fill="currentColor"></path><path d="M19 9a3 3 0 0 1 0 6" fill="none" stroke="currentColor" stroke-width="2"></path></svg></span><span><strong>Reportes vecinales</strong><span class="desc">Mascotas u objetos perdidos o encontrados: completás un formulario, se genera un mensaje para el WhatsApp del club y ahí sumás las fotos. Lo revisamos y lo publicamos en LA EUGE informa.</span></span></span>
+      <span class="texto"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a6 6 0 0 0-6 6v3.5c0 .8-.3 1.6-.9 2.1L4 14.8c-.6.6-.2 1.7.7 1.7h14.6c.9 0 1.3-1.1.7-1.7l-1.1-1.2c-.6-.5-.9-1.3-.9-2.1V8a6 6 0 0 0-6-6Z" fill="none" stroke="currentColor" stroke-width="2"></path><path d="M9.5 19a2.5 2.5 0 0 0 5 0" fill="none" stroke="currentColor" stroke-width="2"></path></svg></span><span><strong>Reportes vecinales</strong><span class="desc">Mascotas u objetos perdidos o encontrados: completás un formulario, se genera un mensaje para el WhatsApp del Club y ahí sumás las fotos. Lo revisamos y lo publicamos en LA EUGE informa 📣.</span></span></span>
       <a class="boton-chip" href="https://clubdecampolaeugenia.taplink.site/">Abrir</a>
     </li>
     <li>
-      <span class="texto"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 7 11 7 11Z" fill="none" stroke="currentColor" stroke-width="2"></path><circle cx="12" cy="10" r="2.3" fill="currentColor"></circle></svg></span><span><strong>Cómo llegar</strong><span class="desc">Plano para visitas y proveedores, disponible con el QR del ingreso.</span></span></span>
+      <span class="texto"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 7 11 7 11Z" fill="none" stroke="currentColor" stroke-width="2"></path><circle cx="12" cy="10" r="2.3" fill="currentColor"></circle></svg></span><span><strong>Cómo llegar</strong><span class="desc">Mapa interactivo propio, diseñado para visitas y proveedores, disponible con el QR del ingreso.</span></span></span>
       <a class="boton-chip" href="https://clubdecampolaeugenia.github.io/mapa-la-eugenia/">Abrir el plano</a>
     </li>
     <li>
-      <span class="texto"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"></rect><path d="M3 10h18" stroke="currentColor" stroke-width="2"></path></svg></span><span><strong>Movimiento de tesorería</strong><span class="desc">Resumen mensual de ingresos y egresos del club.</span></span></span>
+      <span class="texto"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"></rect><path d="M3 10h18" stroke="currentColor" stroke-width="2"></path></svg></span><span><strong>Movimiento de tesorería</strong><span class="desc">Resumen mensual de ingresos y egresos del Club.</span></span></span>
       <a class="boton-chip" href="https://clubdecampolaeugenia.github.io/tesoreria-la-eugenia/">Ver el último mes</a>
     </li>
     <li>
-      <span class="texto"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"></rect><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"></rect><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"></rect><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"></rect></svg></span><span><strong>Zonas de mantenimiento</strong><span class="desc">Cómo se organiza el mantenimiento del barrio y el cronograma de cada zona.</span></span></span>
+      <span class="texto"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"></rect><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"></rect><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"></rect><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"></rect></svg></span><span><strong>Zonas de mantenimiento</strong><span class="desc">Cómo se organiza el mantenimiento del barrio y el cronograma de cada zona. Descubrí en qué zona se encuentra tu lote.</span></span></span>
       <a class="boton-chip" href="https://clubdecampolaeugenia.github.io/zonas.de.mantenimiento/">Ver las zonas</a>
     </li>
     <li>
-      <span class="texto"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="2"></path><path d="M14 3v5h5" fill="none" stroke="currentColor" stroke-width="2"></path><path d="M9 13h6M9 17h6" stroke="currentColor" stroke-width="1.6"></path></svg></span><span><strong>Reglamentos y estatutos</strong><span class="desc">Estatuto social y reglamentos de uso de las instalaciones.</span></span></span>
-      <a class="boton-chip" href="https://clubdecampolaeugenia.taplink.site/">Consultar</a>
+      <span class="texto"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="2"></path><path d="M14 3v5h5" fill="none" stroke="currentColor" stroke-width="2"></path><path d="M9 13h6M9 17h6" stroke="currentColor" stroke-width="1.6"></path></svg></span><span><strong>Reglamentos y estatutos</strong><span class="desc">Estatuto social y reglamentos de uso de las instalaciones. Los encontrás en el CGV.</span></span></span>
     </li>
   </ul>
-  <p class="nota-chica">¿Lo querés a un toque? <a href="https://www.youtube.com/shorts/sUg4Yj5BGeY" style="font-weight:700" target="_blank" rel="noopener noreferrer">Agregalo a la pantalla de tu celular</a>.</p>
+  <p class="nota-chica">¿Lo querés a un toque? <a href="https://www.youtube.com/shorts/sUg4Yj5BGeY" class="link-fuerte" target="_blank" rel="noopener noreferrer">Agregalo a la pantalla de tu celular</a>.</p>
 
-  <div class="bloque-lote">
-    <p class="titulo">Tu lote en el barrio</p>
-    <p class="sub">Manzanas de la A a la W; el club está en la F.</p>
-    <div class="lote-form">
-      <label>Manzana<input type="text" id="inManzana" maxlength="1" value="C" oninput="actualizarLote()"></label>
-      <label>Lote<input type="text" id="inLote" inputmode="numeric" maxlength="2" value="12" oninput="actualizarLote()"></label>
-      <p class="resultado" id="loteResultado"></p>
-    </div>
-    <div class="lote-acciones">
-      <a class="boton-lima" id="linkVerPlano" href="#" target="_blank" rel="noopener noreferrer">Ver en el plano</a>
-      <a class="boton-outline boton-outline--claro" id="linkConsultarLote" href="#" target="_blank" rel="noopener noreferrer">Consultar sobre mi lote</a>
-    </div>
   </div>
 </section>
 
-<!-- ══════════════ 05 · Vivir el club ══════════════ -->
-<section class="contenedor" id="club">
-  <p class="eyebrow">05 · Vivir el club</p>
+<!-- ══════════════ 05 · Vivir el Club ══════════════ -->
+<section class="seccion contenedor" id="Club">
+  <div class="encabezado"><p class="eyebrow">05 · Vivir el Club</p></div>
+  <div class="fotos-club reveal">
+    <img src="https://clubdecampolaeugenia.github.io/fotos/album-pileta-panoramica.jpg" alt="Vista panorámica de la pileta del Club" loading="lazy">
+  </div>
   <ul class="lista-herramientas">
-    <li><span class="texto"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 7 11 7 11Z" fill="none" stroke="currentColor" stroke-width="2"></path><circle cx="12" cy="10" r="2.3" fill="currentColor"></circle></svg></span><span><strong>Salón de eventos.</strong> <span class="desc">Para festejos y reuniones. La reserva se consulta por WhatsApp, a través del Centro de Gestión.</span></span></span><a class="boton-chip" href="https://clubdecampolaeugenia.taplink.site/">Abrir el Centro de Gestión</a></li>
-    <li><span class="texto"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"></rect><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2"></path></svg></span><span><strong>Temporada de pileta.</strong> <span class="desc">Abre en diciembre, con colonia de vacaciones. Fechas y horarios, en LA EUGE informa.</span></span></span></li>
+    <li><span class="texto"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 7 11 7 11Z" fill="none" stroke="currentColor" stroke-width="2"></path><circle cx="12" cy="10" r="2.3" fill="currentColor"></circle></svg></span><span><strong>Salón de eventos.</strong> <span class="desc">Para festejos y reuniones. La reserva se consulta por WhatsApp, a través del CGV.</span></span></span></li>
+    <li><span class="texto"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"></rect><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2"></path></svg></span><span><strong>Temporada de pileta.</strong> <span class="desc">Abre en diciembre, con colonia de vacaciones. Fechas y horarios, en LA EUGE informa 📣.</span></span></span></li>
     <li><span class="texto"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 7 11 7 11Z" fill="none" stroke="currentColor" stroke-width="2"></path><circle cx="12" cy="10" r="2.3" fill="currentColor"></circle></svg></span><span><strong>Cantina de Doña Negra.</strong> <span class="desc">Concesionada.</span></span></span><a class="boton-chip" href="https://wa.me/5493764708076"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.35 2 11.7c0 1.85.53 3.58 1.45 5.06L2 22l5.4-1.4a10.1 10.1 0 0 0 4.6 1.1c5.52 0 10-4.35 10-9.7S17.52 2 12 2Zm0 17.7c-1.5 0-2.9-.4-4.12-1.1l-.3-.17-3.2.83.86-3.1-.2-.32A7.9 7.9 0 0 1 4 11.7C4 7.45 7.58 4 12 4s8 3.45 8 7.7-3.58 8-8 8Z" fill="currentColor"></path><path d="M9.1 8.24c-.19-.42-.38-.43-.56-.44h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08s.89 2.41 1.02 2.58c.13.17 1.76 2.68 4.26 3.76.59.25 1.06.4 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29-.25-.13-1.47-.73-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.65.81-.79.97-.15.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.44-.06-.13-.55-1.35-.76-1.84Z" fill="currentColor"></path></svg></span> +54 9 3764 708076</a></li>
     <li><span class="texto"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 7 11 7 11Z" fill="none" stroke="currentColor" stroke-width="2"></path><circle cx="12" cy="10" r="2.3" fill="currentColor"></circle></svg></span><span><strong>Gimnasio La Eugenia.</strong> <span class="desc">Concesionado, a cargo de Pablo Fackelmann.</span></span></span><a class="boton-chip" href="https://wa.me/5492267636147"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.35 2 11.7c0 1.85.53 3.58 1.45 5.06L2 22l5.4-1.4a10.1 10.1 0 0 0 4.6 1.1c5.52 0 10-4.35 10-9.7S17.52 2 12 2Zm0 17.7c-1.5 0-2.9-.4-4.12-1.1l-.3-.17-3.2.83.86-3.1-.2-.32A7.9 7.9 0 0 1 4 11.7C4 7.45 7.58 4 12 4s8 3.45 8 7.7-3.58 8-8 8Z" fill="currentColor"></path><path d="M9.1 8.24c-.19-.42-.38-.43-.56-.44h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08s.89 2.41 1.02 2.58c.13.17 1.76 2.68 4.26 3.76.59.25 1.06.4 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29-.25-.13-1.47-.73-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.65.81-.79.97-.15.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.44-.06-.13-.55-1.35-.76-1.84Z" fill="currentColor"></path></svg></span> +54 9 2267 636147</a></li>
   </ul>
-  <p class="nota-chica">Para mostrar el club a quien quieras, <a href="https://clubdecampolaeugenia.github.io/" style="font-weight:700">nuestra web es la carta de presentación</a>.</p>
+  <p class="nota-chica">Para mostrar el Club a quien quieras, <a href="https://clubdecampolaeugenia.github.io/" class="link-fuerte">nuestra web es la carta de presentación</a>.</p>
 </section>
 
 <!-- ══════════════ 06 · Cómo nos organizamos ══════════════ -->
-<section class="contenedor" id="organizacion">
-  <p class="eyebrow">06 · Cómo nos organizamos</p>
-  <p style="margin:0 0 20px; line-height:1.6">El club lo gestiona una Asociación Civil. Sus socios eligen en asamblea a la Comisión Directiva, que se reúne de manera virtual; si querés plantear un tema en una reunión presencial, podés solicitarla por email.</p>
+<section class="seccion franja" id="organizacion">
+  <div class="contenedor">
+  <div class="encabezado"><p class="eyebrow">06 · Cómo nos organizamos</p></div>
+  <p class="parrafo mb-md">El Club lo gestiona una Asociación Civil. Sus socios eligen en asamblea a la Comisión Directiva, que se reúne de manera virtual; si querés plantear un tema en una reunión presencial, podés solicitarla por email.</p>
 
-  <div class="fichas">
+  <div class="fichas reveal">
     <div class="ficha">
-      <div class="fila-cabecera" style="margin-bottom:2px"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle><path d="M4 20c0-4 4-6 8-6s8 2 8 6" fill="none" stroke="currentColor" stroke-width="2"></path></svg></span><p class="rotulo" style="margin:0">Administración y Cobranzas</p></div>
+      <div class="fila-cabecera fila-cabecera--mini"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle><path d="M4 20c0-4 4-6 8-6s8 2 8 6" fill="none" stroke="currentColor" stroke-width="2"></path></svg></span><p class="rotulo">Administración y Cobranzas</p></div>
       <p class="nombre">Raúl O. Toloza</p>
       <p class="rol">Socio a cargo: facturación, pagos y estado de cuenta.</p>
       <div class="links"><a class="boton-chip" href="https://wa.me/5493764603432"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.35 2 11.7c0 1.85.53 3.58 1.45 5.06L2 22l5.4-1.4a10.1 10.1 0 0 0 4.6 1.1c5.52 0 10-4.35 10-9.7S17.52 2 12 2Zm0 17.7c-1.5 0-2.9-.4-4.12-1.1l-.3-.17-3.2.83.86-3.1-.2-.32A7.9 7.9 0 0 1 4 11.7C4 7.45 7.58 4 12 4s8 3.45 8 7.7-3.58 8-8 8Z" fill="currentColor"></path><path d="M9.1 8.24c-.19-.42-.38-.43-.56-.44h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08s.89 2.41 1.02 2.58c.13.17 1.76 2.68 4.26 3.76.59.25 1.06.4 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29-.25-.13-1.47-.73-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.65.81-.79.97-.15.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.44-.06-.13-.55-1.35-.76-1.84Z" fill="currentColor"></path></svg></span> +54 9 3764 60-3432</a><a class="boton-chip" href="#" id="linkAgendarRaul"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"></rect><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2"></path></svg></span> Agendar</a></div>
     </div>
     <div class="ficha">
-      <div class="fila-cabecera" style="margin-bottom:2px"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle><path d="M4 20c0-4 4-6 8-6s8 2 8 6" fill="none" stroke="currentColor" stroke-width="2"></path></svg></span><p class="rotulo" style="margin:0">Intendencia</p></div>
+      <div class="fila-cabecera fila-cabecera--mini"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle><path d="M4 20c0-4 4-6 8-6s8 2 8 6" fill="none" stroke="currentColor" stroke-width="2"></path></svg></span><p class="rotulo">Intendencia</p></div>
       <p class="nombre">Fernanda Magni</p>
       <p class="rol">Área operativa: el nexo diario en mantenimiento y espacios comunes.</p>
       <div class="links"><a class="boton-chip" href="https://wa.me/5491157603711"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.35 2 11.7c0 1.85.53 3.58 1.45 5.06L2 22l5.4-1.4a10.1 10.1 0 0 0 4.6 1.1c5.52 0 10-4.35 10-9.7S17.52 2 12 2Zm0 17.7c-1.5 0-2.9-.4-4.12-1.1l-.3-.17-3.2.83.86-3.1-.2-.32A7.9 7.9 0 0 1 4 11.7C4 7.45 7.58 4 12 4s8 3.45 8 7.7-3.58 8-8 8Z" fill="currentColor"></path><path d="M9.1 8.24c-.19-.42-.38-.43-.56-.44h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08s.89 2.41 1.02 2.58c.13.17 1.76 2.68 4.26 3.76.59.25 1.06.4 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29-.25-.13-1.47-.73-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.65.81-.79.97-.15.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.44-.06-.13-.55-1.35-.76-1.84Z" fill="currentColor"></path></svg></span> +54 9 11 5760-3711</a><a class="boton-chip" href="#" id="linkAgendarFernanda"><span class="ico ico--claro"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"></rect><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2"></path></svg></span> Agendar</a></div>
@@ -581,11 +642,9 @@ details[open] .chev{ transform:rotate(180deg); }
   <div class="desplegables">
     <details>
       <summary>Comisión Directiva y Revisor de Cuentas<svg class="chev" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="#135457" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
-      <p>Es un cuerpo de 12 personas, renovado parcialmente cada año en asamblea. Dos referencias estables:</p>
+      <p>Es un cuerpo de 12 personas, renovado parcialmente cada año en asamblea. Su máxima autoridad es:</p>
       <dl>
         <dt>Presidente</dt><dd>Javier Stefañuk</dd>
-        <dt>Vicepresidente</dt><dd>Augusto Coutada</dd>
-        <dt>Revisor de Cuentas</dt><dd>José Luis Calvo</dd>
       </dl>
     </details>
     <details>
@@ -593,12 +652,7 @@ details[open] .chev{ transform:rotate(180deg); }
       <p>Una vez al año la Asamblea General Ordinaria considera la memoria y el balance del ejercicio. La convocatoria y la documentación quedan disponibles para todos los socios antes de la fecha.</p>
     </details>
   </div>
-</section>
-
-<!-- ══════════════ 07 · Nuestra historia ══════════════ -->
-<section class="contenedor">
-  <p class="eyebrow">07 · Nuestra historia</p>
-  <p style="line-height:1.7">Estamos reconstruyendo la historia del barrio. Si vivís acá desde los primeros años y querés contarla, nos encantaría escucharte.</p>
+  </div>
 </section>
 
 <!-- ══════════════ Pie (markup tal cual el sitio público) ══════════════ -->
@@ -606,7 +660,7 @@ details[open] .chev{ transform:rotate(180deg); }
   <div class="pie__inner">
     <div class="pie__marca">
       <div class="acento" aria-hidden="true"><span></span><span></span></div>
-      <span class="club-de-campo">Club de Campo</span>
+      <span class="Club-de-campo">Club de Campo</span>
       <span class="marca wordmark">La Eugenia</span>
       <p class="pie__direccion">Club de Campo La Eugenia, Asociación Civil<br>Ruta Nacional 105, Km 5, Garupá, Misiones. C.P. 3304</p>
     </div>
@@ -621,11 +675,15 @@ details[open] .chev{ transform:rotate(180deg); }
       </a>
       <a class="pie__dato" href="mailto:clubdecampolaeugenia@gmail.com">
         <span class="pie__icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6Zm2.4-.5 6.1 5 6.1-5H5.4ZM19 7.9l-6.4 5.2a1 1 0 0 1-1.2 0L5 7.9V18h14V7.9Z"></path></svg></span>
-        <span class="pie__dato-texto"><strong>Email</strong><span>clubdecampolaeugenia@<span style="white-space:nowrap">gmail.com</span></span></span>
+        <span class="pie__dato-texto"><strong>Email</strong><span>clubdecampolaeugenia@<span class="no-partir">gmail.com</span></span></span>
       </a>
       <a class="pie__dato pie__dato--instagram" href="https://www.instagram.com/laeugeniaclub" target="_blank" rel="noopener noreferrer">
         <span class="pie__icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><line x1="17.3" y1="6.7" x2="17.31" y2="6.7"></line></svg></span>
         <span class="pie__dato-texto"><strong>Instagram</strong><span>@laeugeniaclub</span></span>
+      </a>
+      <a class="pie__dato" href="https://clubdecampolaeugenia.github.io/" target="_blank" rel="noopener noreferrer">
+        <span class="pie__icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3c2.5 2.5 4 5.5 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.5-4-9s1.5-6.5 4-9Z"></path></svg></span>
+        <span class="pie__dato-texto"><strong>Sitio web</strong><span>clubdecampolaeugenia.github.io</span></span>
       </a>
     </div>
   </div>
@@ -671,6 +729,25 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 });
 
+/* ══════════════ Animación de aparición al hacer scroll ══════════════ */
+document.addEventListener('DOMContentLoaded', function(){
+  var elementos = document.querySelectorAll('.reveal');
+  if(!elementos.length) return;
+  if(!('IntersectionObserver' in window)){
+    elementos.forEach(function(el){ el.classList.add('is-visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries, obs){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.15});
+  elementos.forEach(function(el){ io.observe(el); });
+});
+
 /* ══════════════ 01 · Tabs propietario/inquilino ══════════════ */
 function elegirPerfil(perfil){
   var esProp = perfil === 'propietario';
@@ -692,48 +769,6 @@ function copiarAlias(){
   setTimeout(function(){ btn.textContent = 'Copiar alias'; }, 2500);
 }
 
-/* ══════════════ 04 · Buscador de lote ══════════════
-   LOTES_VALIDOS: los 330 códigos de lote reales, tomados del objeto LOTES
-   de zonas.de.mantenimiento/index.html (misma fuente de verdad que pide
-   el brief), para poder avisar si el lote no existe antes de armar los
-   links. F00 (la manzana del club, partes indivisas) no figura ahí a
-   propósito: se trata aparte como caso especial. */
-var LOTES_VALIDOS = new Set(["A01","A02","A03","A04","A05","A06","A07","A08","A09","A10","A11","A12","A13","A14","A15","A16","A17","A18","A19","A20","A21","A22","A23","A24","A25","A26","A27","A28","A29","B01","B02","B03","B04","B05","B06","B07","B08","B09","B10","B11","B12","B13","B14","B15","B16","B17","B18","B19","B20","B21","B22","B23","B24","B25","B26","B27","B28","B29","B30","B31","B32","B33","B34","B35","B36","B37","C01","C02","C03","C04","C05","C06","C07","C08","C09","C10","C11","C12","C13","C14","C15","C16","D01","D02","D03","D04","D05","D06","D07","D08","D09","D10","E01","E02","E03","E04","E05","E06","E07","E08","E09","E10","E11","G01","G02","G03","G04","G05","G06","G07","G08","G09","G10","H01","H02","H03","H04","H05","H06","H07","H08","H09","H10","H11","H12","H13","H14","H15","H16","I01","I02","I03","I04","I05","I06","I07","I08","I09","I10","I11","I12","J01","J02","J03","J04","J05","J06","J07","J08","J09","J10","K01","K02","K03","K04","K05","K06","K07","K08","K09","K10","K11","K12","K13","K14","L01","L02","L03","L04","L05","L06","L07","L08","L09","L10","L11","L12","L13","L14","L15","L16","M01","M02","M03","M04","M05","M06","M07","M08","M09","M10","M11","M12","M13","M14","M15","M16","N01","N02","N03","N04","N05","N06","O01","O02","O03","O04","O05","O06","P01","P02","P03","P04","P05","P06","P07","P08","P09","P10","P11","P12","P13","P14","P15","Q01","Q02","Q03","Q04","Q05","Q06","Q07","Q08","Q09","Q10","Q11","Q12","Q13","Q14","Q15","Q16","R01","R02","R03","R04","R05","R06","R07","R08","R09","R10","R11","R12","R13","R14","S01","S02","S03","S04","S05","S06","S07","S08","S09","S10","S11","S12","S13","S14","T01","T02","T03","T04","T05","T06","T07","T08","T09","T10","T11","T12","T13","T14","T15","T16","U01","U02","U03","U04","U05","U06","U07","U08","U09","U10","U11","U12","U13","U14","U15","U18","U19","U20","U21","U22","U23","U24","U25","U26","V01","V02","V03","V04","V05","V06","V07","V08","V09","V10","V11","W01","W02","W03","W04","W05","W06","W07","W08","W09","W10","W11"]);
-
-function actualizarLote(){
-  var mz = (document.getElementById('inManzana').value || '').trim().toUpperCase().slice(0,1);
-  var ltRaw = (document.getElementById('inLote').value || '').replace(/\D/g,'');
-  var resultadoEl = document.getElementById('loteResultado');
-  var linkPlano = document.getElementById('linkVerPlano');
-  var linkConsulta = document.getElementById('linkConsultarLote');
-  var resultado = '';
-  var habilitar = false;
-
-  if(mz === 'F'){
-    resultado = 'Es la manzana del club';
-  } else if(mz && ltRaw){
-    var lt = ltRaw.length === 1 ? '0' + ltRaw : ltRaw;
-    var codigo = mz + lt;
-    if(LOTES_VALIDOS.has(codigo)){
-      var zona = 0;
-      if('ABCDE'.indexOf(mz) !== -1) zona = 1;
-      else if('GHIJKLMNOPQR'.indexOf(mz) !== -1) zona = 2;
-      else if('STUVW'.indexOf(mz) !== -1) zona = 3;
-      resultado = zona ? ('Zona ' + zona + ' de mantenimiento') : '';
-      linkPlano.href = 'https://clubdecampolaeugenia.github.io/zonas.de.mantenimiento/?lote=' + codigo;
-      habilitar = true;
-    } else {
-      resultado = 'No encontramos ese lote — revisá manzana y número';
-    }
-  }
-  resultadoEl.textContent = resultado;
-  linkPlano.style.visibility = habilitar ? 'visible' : 'hidden';
-
-  var msg = 'Hola Raúl, te escribo por el lote ' + (ltRaw || '') + ' de la manzana ' + (mz || '') + '. Quisiera consultar el estado de cuenta.';
-  linkConsulta.href = 'https://wa.me/5493764603432?text=' + encodeURIComponent(msg);
-}
-document.addEventListener('DOMContentLoaded', actualizarLote);
-
 /* ══════════════ 06 · Agendar contacto (.vcf) ══════════════ */
 function vcardHref(nombre, apellido, org, telE164){
   var v = 'BEGIN:VCARD\nVERSION:3.0\nN:' + apellido + ';' + nombre + ';;;\nFN:' + nombre + ' ' + apellido + '\nORG:' + org + '\nTEL;TYPE=CELL:' + telE164 + '\nEND:VCARD';
@@ -749,6 +784,11 @@ document.addEventListener('DOMContentLoaded', function(){
   if(fernanda){
     fernanda.href = vcardHref('Fernanda', 'Magni', 'Club de Campo La Eugenia - Intendencia', '+5491157603711');
     fernanda.setAttribute('download', 'fernanda-magni.vcf');
+  }
+  var garita = document.getElementById('linkAgendarGarita');
+  if(garita){
+    garita.href = vcardHref('Garita', 'de ingreso', 'Club de Campo La Eugenia', '+5491161888188');
+    garita.setAttribute('download', 'garita-de-ingreso.vcf');
   }
 });
 </script>
